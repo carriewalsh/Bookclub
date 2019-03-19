@@ -1,0 +1,70 @@
+Project: BookClub:
+
+Team Name: Best Team
+
+Group Member Names: Ethan Grab, Carrie Walsh
+
+Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
+- 3 in everything
+  - focus on extensions (Grab)
+  - focus on CSS (Walsh)
+- ActiveRecord - real understanding
+  - many to many
+- We will be proud
+
+Team strengths & collaboration styles (consider discussing your Pairin qualities here):
+- sense of humor
+- collaboration - divide and conquer
+- create big picture ahead of time - know where we're going
+- vision
+
+How we can use our strengths to overcome obstacles:
+- if we struggle, make a joke
+  - but then ask for help - TEAMWORK
+- git workflow - big picture
+
+Schedule Expectations (When are we available to work together and individually? What constraints do we have?):
+- Carrie gets here at 7am - leaves early
+- Ethan goes to bed late - stays late
+
+Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team?):
+- be nice
+- talk often
+- PR's at the end of the school day
+- it's okay to take a pom (30 min, afternoon, day)
+
+Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
+- ActiveRecord
+- Feature testing
+- TDD
+
+Workload Expectations (What features do we each want to work on?):
+separate - TBD
+together
+- db setup
+- Rails setup
+
+
+Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques):
+- waffle.io
+- communicate
+- CO-AUTHORING
+
+Expectations for giving and receiving feedback:
+- be nice
+- be specific
+- be actionable
+
+Project management tools we will use:
+- waffle.io
+- paper
+- google sheets
+
+Day 1 Agenda:
+- get database schema
+- start seed data
+- setup Rails?
+- wireframes
+
+
+Additional Notes:
