@@ -65,3 +65,20 @@
     <input type="submit" name="sort" value="Most Pages">
   </form> -->
 </section>
+<div class="books-container">
+  <% @books.each do |book| %>
+    <div class="book-card">
+      <div class="basic-info">
+        <img src="book[cover_image]" alt="cover of <%= book[title] %>">
+        <h3><%= book[title] %></h3>
+        <p><%= book.authors %></p>
+        <p><%= book[publication_year] %></p>
+        <p><%= book[pages] %></p>
+      </div>
+      <div class="review-info">
+        <p><%= average book rating %></p>
+        <p><%= total number of reviews %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
