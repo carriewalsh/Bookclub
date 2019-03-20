@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "a user visiting books index page" do
   before :each do
+    @b1 = Book.create(title: "Book 1", publication_year: 1995, pages: 100, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
   end
 
   context "when I look at the stats bar" do
@@ -73,6 +74,43 @@ RSpec.describe "a user visiting books index page" do
         expect(page).to have_button("Add Book")
         click_button("Add Book")
         expect(current_path).to eq new_book_path
+      end
+    end
+  end
+
+  context "when I look at the books section" do
+    it "should show all book cards" do
+      visit books_path
+      within ".books-conatiner" do
+        expect(page).to have_css(".book-card", count: 1) #CHANGE NUMBER
+      end
+    end
+
+    it "should show the book title" do
+      visit books_path
+      within.first ".book-card" do
+        expect(page).to have_content("Book 1")
+      end
+    end
+
+    it "should show the book publication year" do
+      visit books_path
+      within.first ".book-card" do
+        expect(page).to have_content(1995)
+      end
+    end
+
+    it "should show the book pages count" do
+      visit books_path
+      within.first ".book-card" do
+        expect(page).to have_content(100)
+      end
+    end
+
+    it "should show the book cover image" do
+      visit books_path
+      within.first ".book-card" do
+        expect(page).to have_content("https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       end
     end
   end
