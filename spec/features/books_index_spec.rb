@@ -29,4 +29,51 @@ RSpec.describe "a user visiting books index page" do
       end
     end
   end
+
+  context "when I look at the sorting toggle" do
+    xit "should have sort by most pages" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Most Pages")
+        click_button("Most Pages")
+        expect(current_path).to eq books_path #is this right??
+      end
+    end
+
+    xit "should have sort by fewest pages" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Fewest Pages")
+        click_button("Fewest Pages")
+        expect(current_path).to eq books_path #is this right??
+      end
+    end
+
+    xit "should have sort by most reviews" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Most Reviews")
+        click_button("Most Reviews")
+        expect(current_path).to eq books_path #is this right??
+      end
+    end
+
+    xit "should have sort by fewest reviews" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Fewest Reviews")
+        click_button("Fewest Reviews")
+        expect(current_path).to eq books_path #is this right??
+      end
+    end
+
+    xit "should have an add book button" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Add Book")
+        click_button("Add Book")
+        expect(current_path).to eq new_book_path
+      end
+    end
+  end
 end
