@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe " a user visiting the index page" do
+RSpec.describe "a user visiting any page" do
   before :each do
   end
 
