@@ -14,6 +14,31 @@
  *= require_self
  */
 
+body {
+  font-family: geneva;
+  background-image: url(https://s3-us-west-1.amazonaws.com/planoprofilewebsite/wp-content/uploads/2016/06/18061450/books.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
  nav {
-   
+   display: flex;
+   background-color: black;
+   flex-direction: row;
+   width: cover;
+   justify-content: space-around;
+   padding-left: 20vw;
+   padding-right: 20vw;
+   padding-top: 2vw;
+   padding-bottom: 2vw;
+ }
+
+ nav a{
+   color: #F54923;
+   text-decoration: none;
+   font-size: 20px;
+ }
+ nav a:hover {
+   color: white;
  }
