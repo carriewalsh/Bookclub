@@ -15,6 +15,7 @@ RSpec.describe "a user visiting any page" do
     end
 
     it "should link home to root" do
+      visit books_path
       within "nav" do
         click_link "Home"
         expect(current_path).to eq root_path
@@ -22,6 +23,7 @@ RSpec.describe "a user visiting any page" do
     end
 
     it "should link books to book index page" do
+      visit root_path
       within "nav" do
         click_link "Books"
         expect(current_path).to eq books_path
