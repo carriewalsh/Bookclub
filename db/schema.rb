@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 20190319221248) do
     t.string "title"
     t.integer "rating"
     t.text "review_text"
-    t.bigint "books_id"
+    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["books_id"], name: "index_reviews_on_books_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
   add_foreign_key "book_authors", "authors"
   add_foreign_key "book_authors", "books"
-  add_foreign_key "reviews", "books", column: "books_id"
+  add_foreign_key "reviews", "books"
 end
