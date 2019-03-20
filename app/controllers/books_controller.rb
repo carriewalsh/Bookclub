@@ -1,8 +1,5 @@
 class BooksController < ApplicationController
   def index
-    @songs = Song.all
-  end
-
-  def show
+    @books = Book.all
   end
 end
