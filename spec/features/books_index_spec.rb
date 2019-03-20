@@ -79,6 +79,7 @@ RSpec.describe "a user visiting books index page" do
   end
 
   context "when I look at the books section" do
+    @b1 = Book.create(title: "Book 1", publication_year: 1995, pages: 100, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
     it "should show all book cards" do
       visit books_path
       within ".books-conatiner" do
