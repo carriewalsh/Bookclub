@@ -12,4 +12,8 @@ class BooksController < ApplicationController
     @average_review_rating = @reviews.average(:rating)
   end
 
+  def new
+    @book = Book.new
+  end
+
 end
