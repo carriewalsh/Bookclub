@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chonburi|Muli"> -->
+  </head>
+  <body>
+    <ul>
+      <li>Title: <%= @book.title %></li>
+      <li>Author(s): </li>
+        <% @authors.each do |author| %>
+        <li><%= author.name %></li>
+        <% end %>
+      <li>Publication Year: <%= @book.publication_year %></li>
+      <li>Page Count: <%= @book.pages %></li>
+    </ul>
+
+    <% @reviews.each do |review| %>
+      <ul>
+        <li>Review Title: <%= review.title %></li>
+        <li>Username: <%= review.username %></li>
+        <li>Rating: <%= review.rating %></li>
+        <li>Review: <%= review.review_text %></li>
+      </ul>
+    <% end %>
+  </body>
+</html>
