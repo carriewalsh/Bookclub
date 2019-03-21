@@ -69,7 +69,7 @@
   <% @books.each do |book| %>
     <div class="book-card">
       <div class="basic-info">
-        <img src="book[cover_image]" alt="cover of <%= book.title %>">
+        <img src=<%= book.cover_image %> alt="cover of <%= book.title %>">
         <h3><%= book.title %></h3>
         <p><%= book.authors %></p>
         <p><%= book.publication_year %></p>

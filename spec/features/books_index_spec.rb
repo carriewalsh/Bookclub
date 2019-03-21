@@ -108,11 +108,12 @@ RSpec.describe "a user visiting books index page" do
       end
     end
 
-    xit "should show the book cover image" do
+    it "should show the book cover image" do
       #IDK HOW TO TEST FOR IMG
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
+        filename = "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
+        expect(page).to have_css("img[src*='#{filename}']")
       end
     end
   end
