@@ -108,7 +108,7 @@ nav {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 100px;
+  margin-top: 8em;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -166,7 +166,7 @@ nav {
   z-index: 10;
   text-align: center;
   font-size: 1.5em;
-  padding-right: 4em;
+  padding-right: 6em;
 }
 
 .basic-info {
@@ -189,4 +189,20 @@ nav {
 #sort-button:hover {
   color: black;
   background-color: #D4D5D7;
+}
+
+#add-book {
+  border: none;
+  color: black;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  width: 8em;
+  font-size: 1em;
+}
+
+#add-book:hover {
+  color: #D4D5D7;
+  background-color: #3C618B;
 }
