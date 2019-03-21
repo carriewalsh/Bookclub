@@ -11,7 +11,7 @@ RSpec.describe "new book workflow" do
 
       visit books_path
       click_link "Add Book"
-
+# save_and_open_page
       expect(current_path).to eq new_book_path
       fill_in "Title", with: book_name
       fill_in :authors, with: book_author
