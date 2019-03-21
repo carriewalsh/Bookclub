@@ -1,10 +1,29 @@
 <ul>
-  <li>Top Reviews: </li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>Negative Reviews: </li>
+  <% @wtop_three_reviews.each do |review| %>
+    <li>Review Title: <%= review.title %></li>
+    <li>Rating: <%= review.rating %></li>
+    <li>User: <%= review.username %></li>
+  <% end %>
   <li></li>
 </ul>
+
+<ul>
+  <li>Negative Reviews: </li>
+  <% @worst_three_reviews.each do |review| %>
+    <li>Review Title: <%= review.title %></li>
+    <li>Rating: <%= review.rating %></li>
+    <li>User: <%= review.username %></li>
+  <% end %>
+  <li></li>
+</ul>
+
+<ul>
+  <li>Average Review Rating: </li>
+  <li></li>
+</ul>
+
+
 
 <ul>
   <li>Title: <%= @book.title %></li>

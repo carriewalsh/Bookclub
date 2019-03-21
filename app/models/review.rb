@@ -5,4 +5,7 @@ class Review < ApplicationRecord
                         :title,
                         :rating,
                         :review_text
+
+
+
 end

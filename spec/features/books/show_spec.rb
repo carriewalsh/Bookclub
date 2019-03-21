@@ -31,7 +31,8 @@ RSpec.describe 'book show page', type: :feature do
       review_2 = book.reviews.create(username: 'User 2', title: 'Review 2', rating: 1, review_text: "This book is terrible")
       review_2 = book.reviews.create(username: 'User 2', title: 'Review 3', rating: 2, review_text: "This book is a travesty")
 
-
+      visit book_path(book.id)
+      save_and_open_page
       expect(page).to have_content("Top Reviews:")
       expect(page).to have_content(review_1.title)
       expect(page).to have_content(review_1.rating)
@@ -42,7 +43,7 @@ RSpec.describe 'book show page', type: :feature do
       expect(page).to have_content(review_3.title)
       expect(page).to have_content(review_3.rating)
       expect(page).to have_content(review_3.username)
-      expect(page).to have_content("Worst Reviews:")
+      expect(page).to have_content("Negative Reviews:")
       expect(page).to have_content("Average Review Rating: #{book.average_review_rating}")
     end
   end
