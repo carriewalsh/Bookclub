@@ -33,44 +33,45 @@
   <div class="top-reviewers">
     <h2>Top Reviewers</h2>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <!-- this should have username and number of ratings  -->
     </div>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <!-- this should have username and number of ratings  -->
     </div>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <!-- this should have username and number of ratings  -->
     </div>
   </div>
 </section>
 <section class="toggle">
+  <h2>Sort Books By:</h2>
   <!-- I don't know how to do this for a get form or do this a different way -->
   <!-- <form class=".most-pages" action="/books" method="get">
     <input type="submit" name="sort" value="Most Pages">
   </form>
 
-  <form class=".most-pages" action=books_path method="get">
+  <form class=".sort-form" action=books_path method="get">
     <input type="submit" name="sort" value="Fewest Pages">
   </form>
 
-  <form class=".most-pages" action=books_path method="get">
+  <form class=".sort-form" action=books_path method="get">
     <input type="submit" name="sort" value="Most Reviews">
   </form>
 
-  <form class=".most-pages" action=books_path method="get">
+  <form class=".sort-form" action=books_path method="get">
     <input type="submit" name="sort" value="Fewest Reviews">
   </form>
 
-  <form class=".most-pages" action=books_path method="get">
+  <form class=".sort-form" action=books_path method="get">
     <input type="submit" name="sort" value="Most Pages">
   </form> -->
 </section>
 <div class="books-container">
   <% @books.each do |book| %>
     <div class="book-card">
+      <h3><%= book.title %></h3>
+      <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <img src=<%= book.cover_image %> alt="cover of <%= book.title %>">
-        <h3><%= book.title %></h3>
         <p><%= book.authors %></p>
         <p><%= book.publication_year %></p>
         <p><%= book.pages %></p>
