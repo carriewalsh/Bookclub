@@ -109,12 +109,30 @@ RSpec.describe "a user visiting books index page" do
     end
 
     it "should show the book cover image" do
-      #IDK HOW TO TEST FOR IMG
       visit books_path
       within first ".book-card" do
         filename = "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
         expect(page).to have_css("img[src*='#{filename}']")
       end
     end
+
+    it "should show the book average rating" do
+      r1 = Review.create(title: "My Review", username: "BookGirl", rating:4, review_text: "BLalblahablahblah")
+      r2 = Review.create(title: "My Review Again", username: "BookGirl2", rating: 3, review_text: "BLalblahablahblah")
+      visit books_path
+      within first ".book-card" do
+        expect(page).to have_content("Average rating: 3.5") #fix number
+      end
+    end
+
+    it "should show the book number of reviews" do
+      r1 = Review.create(title: "My Review", username: "BookGirl", rating:4, review_text: "BLalblahablahblah")
+      r2 = Review.create(title: "My Review Again", username: "BookGirl2", rating: 3, review_text: "BLalblahablahblah")
+      visit books_path
+      within first ".book-card" do
+        expect(page).to have_content("Total number of reviews: 2") #fix number
+      end
+    end
+
   end
 end
