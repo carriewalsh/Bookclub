@@ -1,11 +1,10 @@
 <ul>
-  <li>Negative Reviews: </li>
-  <% @wtop_three_reviews.each do |review| %>
+  <li>Top Reviews: </li>
+  <% @top_three_reviews.each do |review| %>
     <li>Review Title: <%= review.title %></li>
     <li>Rating: <%= review.rating %></li>
     <li>User: <%= review.username %></li>
   <% end %>
-  <li></li>
 </ul>
 
 <ul>
@@ -15,12 +14,10 @@
     <li>Rating: <%= review.rating %></li>
     <li>User: <%= review.username %></li>
   <% end %>
-  <li></li>
 </ul>
 
 <ul>
-  <li>Average Review Rating: </li>
-  <li></li>
+  <li>Average Review Rating: <%= @average_review_rating %></li>
 </ul>
 
 
