@@ -18,9 +18,7 @@
     <form class="sort-form" action="/books" method="get">
       <input id="sort-button" type="submit" name="sort" value="Fewest Reviews">
     </form>
-    <form class="sort-form" action=new_book_path method="get">
-      <input id="add-book" type="submit" name="add" value="Add Book">
-    </form>
+    <%= button_to "Add Book", new_book_path, {id: "add-book"} %>
     <!-- I don't know how to do this for a get form or do this a different way -->
   </section>
 </header>

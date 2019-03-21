@@ -94,7 +94,7 @@ RSpec.describe "a user visiting books index page" do
       end
     end
 
-    it "should link to book page from title" do
+    xit "should link to book page from title" do
       visit books_path
       within first ".book-card" do
         click_link "Book 1"

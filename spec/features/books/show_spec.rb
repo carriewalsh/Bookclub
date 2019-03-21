@@ -30,7 +30,6 @@ RSpec.describe 'book show page', type: :feature do
     it 'shows book statistics' do
 
       visit book_path(@book.id)
-      save_and_open_page
       expect(page).to have_content("Top Reviews:")
       expect(page).to have_content(@review_1.title)
       expect(page).to have_content(@review_1.rating)
