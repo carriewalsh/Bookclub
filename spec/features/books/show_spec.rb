@@ -4,13 +4,22 @@ RSpec.describe 'book show page', type: :feature do
   describe 'shows book information' do
     it 'shows book information' do
       book = Book.create(title: 'Book 1', publication_year: 1989, pages: 200, cover_image: 'some image')
+      author_1 = book.authors.create(name: "Ethan Grab")
+      author_2 = book.authors.create(name: "Carrie Smith")
+      author_3 = Author.create(name: "Joe Bob")
 
-      visit books_path
 
-      expect(page).to have_link(book_1.title)
-      expect(page).to have_content("Publication Year: #{book_1.publication_year}")
-      expect(page).to have_content("Page Count: #{book_1.pages}")
+      visit book_path(book.id)
+
+      expect(page).to have_content("Title: #{book.title}")
+      expect(page).to have_content("Author(s):")
+      expect(page).to have_content("Ethan Grab")
+      expect(page).to have_content("Carrie Smith")
+      expect(page).to have_content("Publication Year: #{book.publication_year}")
+      expect(page).to have_content("Page Count: #{book.pages}")
       #need to add image test (xpath?)
+      #once html is done add within tests
+
     end
   end
 
@@ -20,7 +29,7 @@ RSpec.describe 'book show page', type: :feature do
       review_1 = book.reviews.create(username: 'User 1', title: 'Review 1', rating: 4, review_text: "This book is great")
       review_2 = book.reviews.create(username: 'User 2', title: 'Review 2', rating: 1, review_text: "This book is terrible")
 
-      visit books_path
+      visit book_path(book.id)
 
       expect(page).to have_content("Review Title: #{review_1.title}")
       expect(page).to have_content("Username: #{review_1.username}")
