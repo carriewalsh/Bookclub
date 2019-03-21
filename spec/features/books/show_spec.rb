@@ -17,6 +17,7 @@ RSpec.describe 'book show page', type: :feature do
       expect(page).to have_content("Carrie Smith")
       expect(page).to have_content("Publication Year: #{book.publication_year}")
       expect(page).to have_content("Page Count: #{book.pages}")
+      expect(page).to have_no_content(author_3.name)
       #need to add image test (xpath?)
       #once html is done add within tests
 
@@ -41,6 +42,7 @@ RSpec.describe 'book show page', type: :feature do
       expect(page).to have_content("Rating: #{review_2.rating}")
       expect(page).to have_content("Review: #{review_2.review_text}")
       #once html is done add within tests
+      #sad paths
     end
   end
 
