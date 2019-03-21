@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 RSpec.describe 'book show page', type: :feature do
@@ -47,3 +48,4 @@ RSpec.describe 'book show page', type: :feature do
   end
 
 end
+

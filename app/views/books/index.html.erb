@@ -1,84 +1,155 @@
-<nav>
-  <p><%= link_to "Home", root_path %></p>
-  <p><%= link_to "Books", books_path %></p>
-</nav>
+<header>
+  <nav>
+    <p><%= link_to "Home", root_path %></p>
+    <p><%= link_to "Books", books_path %></p>
+  </nav>
+
+  <section class="toggle">
+    <h2>Sort Books By:</h2>
+    <form class=".sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Most Pages">
+    </form>
+    <form class="sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Fewest Pages">
+    </form>
+    <form class="sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Most Reviews">
+    </form>
+    <form class="sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Fewest Reviews">
+    </form>
+    <form class="sort-form" action=new_book_path method="get">
+      <input id="add-book" type="submit" name="add" value="Add Book">
+    </form>
+    <!-- I don't know how to do this for a get form or do this a different way -->
+  </section>
+</header>
 
 <section class="statistics">
   <div class="highest-rated">
-    <h2>Three highest rated books:</h2>
+    <h2>Highest rated books:</h2>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone with the Wind</h3>
+      <p>Average rating: 4.5</p>
     </div>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone with the Wind</h3>
+      <p>Average rating: 4.5</p>
     </div>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone with the Wind</h3>
+      <p>Average rating: 4.5</p>
     </div>
+    <!-- <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div>
+    <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div>
+    <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div> -->
   </div>
 
   <div class="lowest-rated">
-    <h2>Three lowest rated books:</h2>
+    <h2>Lowest rated books:</h2>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone with the Wind</h3>
+      <p>Average rating: 4.5</p>
     </div>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone with the Wind</h3>
+      <p>Average rating: 4.5</p>
     </div>
     <div class="book-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Gone wita sgarhaewrhas derehsd etrhser</h3>
+      <p>Average rating: 4.5</p>
     </div>
+    <!-- <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div>
+    <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div>
+    <div class="book-snippet"> -->
+      <!-- this should have the title and rating  -->
+    <!-- </div> -->
   </div>
 
   <div class="top-reviewers">
     <h2>Top Reviewers</h2>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Jon Bon Jovi</h3>
+      <p>Total Reviews: 20</p>
     </div>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Jon Bon Jovi</h3>
+      <p>Total Reviews: 20</p>
     </div>
     <div class="user-snippet">
-      <!-- this should have the title and rating  -->
+      <h3>Jon Bon Jovi</h3>
+      <p>Total Reviews: 500</p>
     </div>
+    <!-- <div class="user-snippet"> -->
+      <!-- this should have username and number of ratings  -->
+    <!-- </div> -->
+    <!-- <div class="user-snippet"> -->
+      <!-- this should have username and number of ratings  -->
+    <!-- </div> -->
+    <!-- <div class="user-snippet"> -->
+      <!-- this should have username and number of ratings  -->
+    <!-- </div> -->
   </div>
 </section>
-<section class="toggle">
-  <!-- I don't know how to do this for a get form or do this a different way -->
-  <!-- <form class=".most-pages" action="/books" method="get">
-    <input type="submit" name="sort" value="Most Pages">
-  </form>
 
-  <form class=".most-pages" action=books_path method="get">
-    <input type="submit" name="sort" value="Fewest Pages">
-  </form>
-
-  <form class=".most-pages" action=books_path method="get">
-    <input type="submit" name="sort" value="Most Reviews">
-  </form>
-
-  <form class=".most-pages" action=books_path method="get">
-    <input type="submit" name="sort" value="Fewest Reviews">
-  </form>
-
-  <form class=".most-pages" action=books_path method="get">
-    <input type="submit" name="sort" value="Most Pages">
-  </form> -->
-</section>
 <div class="books-container">
+  <div class="book-card">
+    <h3>Book 1</h3>
+            <img src=https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg class="book-cover" alt="cover of Book 1">
+    <div class="basic-info">
+      <p>Joe Schmo, John Schmo</p>
+      <br>
+      <p>Publication year: 1995</p>
+      <br>
+      <p>100 page</p>
+    </div>
+    <div class="review-info">
+      <p>Average Rating: 3.3</p>
+      <br>
+      <p>Total Reviews: 4</p>
+    </div>
+  </div>
+  <br>
+  <div class="book-card">
+    <h3>Book 1</h3>
+            <img src=https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg class="book-cover" alt="cover of Book 1">
+    <div class="basic-info">
+      <p>Joe Schmo, John Schmo</p>
+      <br>
+      <p>Publication year: 1995</p>
+      <br>
+      <p>100 page</p>
+    </div>
+    <div class="review-info">
+      <p>Average Rating: 3.3</p>
+      <br>
+      <p>Total Reviews: 4</p>
+    </div>
+  </div>
   <% @books.each do |book| %>
     <div class="book-card">
+      <h3><%=  link_to book.title, books_path %></h3> <!-- BOOK_path(book)-->
+      <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <img src="book[cover_image]" alt="cover of <%= book.title %>">
-        <h3><%= book.title %></h3>
         <p><%= book.authors %></p>
         <p><%= book.publication_year %></p>
         <p><%= book.pages %></p>
       </div>
       <div class="review-info">
-        <!-- <p>average book rating</p> -->
-        <!-- <p>total number of reviews</p> -->
+        <p>Average Rating: book.average_rating</p>  <!-- may  need to change methods-->
+        <p>Total Reviews: book.review_count</p>
       </div>
     </div>
+    <br>
   <% end %>
 </div>
