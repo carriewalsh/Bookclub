@@ -1,3 +1,6 @@
+<%= link_to 'Delete', book_path(@book.id), method: :delete %>
+
+
 <ul>
   <li>Top Reviews: </li>
   <% @top_three_reviews.each do |review| %>

@@ -12,4 +12,9 @@ class BooksController < ApplicationController
     @average_review_rating = @reviews.average(:rating)
   end
 
+  def destroy
+    @book = Book.find(params[:id]).destroy
+    redirect_to :books
+  end
+
 end
