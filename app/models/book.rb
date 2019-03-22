@@ -7,9 +7,9 @@ class Book < ApplicationRecord
   validates_presence_of :title, :publication_year, :pages, :cover_image
 
   def self.avg_rating(book_id)
-    Review.where("reviews.book_id = #{book_id}").average(:rating)
-  end
 
+  end
+# make this one method with lots of arguments(how many, asc/desc/ other?) limit(Book.all.count)
   def self.sort_by_avg_rating_asc
      Book.includes(:reviews).group("books.id").average("reviews.rating") #ish!
      #this gives me a hash of the books and their average rating

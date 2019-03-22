@@ -53,7 +53,10 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_avg_rating_asc" do
       it "can sort the books by the average rating ascending" do
+        binding.pry
         expect(Book.sort_by_avg_rating_asc.first.title).to eq("Title 1")
+        # expect(Book.sort_by_avg_rating_asc).to eq([@b1,@b3])
+        #can do .to include(adksfjasdkf) (if they have the same rating)
         expect(Book.sort_by_avg_rating_asc.last.title).to eq("Title 6")
       end
     end
