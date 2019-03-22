@@ -60,7 +60,8 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_avg_rating_desc" do
       it "can sort the books by the average rating descending" do
-        expect(Book.sort_by_avg_rating_desc).to eq()
+        expect(Book.sort_by_avg_rating_asc.last.title).to eq("Title 1")
+        expect(Book.sort_by_avg_rating_asc.first.title).to eq("Title 6")
       end
     end
 

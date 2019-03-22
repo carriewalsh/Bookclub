@@ -10,6 +10,11 @@ class Book < ApplicationRecord
     Review.where("reviews.book_id = #{book_id}").average(:rating)
   end
 
+  def self.sort_by_avg_rating_asc
+     Book.includes(:reviews).group("books.id").average("reviews.rating") #ish!
+     #this gives me a hash of the books and their average rating
+  end
+
   def self.sort_by_pages_asc
     Book.order(pages: :asc)
   end
