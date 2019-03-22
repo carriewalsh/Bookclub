@@ -10,6 +10,14 @@ class Book < ApplicationRecord
     Review.where("reviews.book_id = #{book_id}").average(:rating)
   end
 
+  def self.sort_by_pages_asc
+    Book.order(pages: :asc)
+  end
+
+  def self.sort_by_pages_desc
+    Book.order(pages: :desc)
+  end
+
   def self.sort_by_total_reviews_asc
     Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) ASC")
   end

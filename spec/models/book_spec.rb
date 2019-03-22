@@ -18,7 +18,7 @@ RSpec.describe Book, type: :model do
   describe "Class Methods" do
     before :each do
       @a = Author.create(name: "Sam Sampson")
-      @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 100, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
+      @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 1, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b2 = @a.books.create(title: "Title 2", publication_year: 1996, pages: 200, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b3 = @a.books.create(title: "Title 3", publication_year: 1996, pages: 300, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b4 = @a.books.create(title: "Title 4", publication_year: 1996, pages: 400, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
@@ -66,14 +66,15 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_pages_asc" do
       it "can sort the books by the pages ascending" do
-        expect(Book.sort_by_pages_asc.first.title).to eq("Title 4")
-        expect(Book.sort_by_pages_asc.last.title).to eq("Title 1")
+        expect(Book.sort_by_pages_asc.last.title).to eq("Title 4")
+        expect(Book.sort_by_pages_asc.first.title).to eq("Title 1")
       end
     end
 
     describe ".sort_by_pages_desc" do
       it "can sort the books by their pages descending" do
-        expect(Book.sort_by_pages_desc).to eq()
+        expect(Book.sort_by_pages_desc.first.title).to eq("Title 4")
+        expect(Book.sort_by_pages_desc.last.title).to eq("Title 1")
       end
     end
 
