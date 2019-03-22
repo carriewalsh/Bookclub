@@ -1,13 +1,19 @@
 class ReviewsController < ApplicationController
-  # def index
-  #   @books = Book.all
-  # end
-  #
-  # def show
-  #   @book = Book.find(params[:id])
-  #   @authors = @book.authors
-  #   @reviews = @book.reviews
-  # end
+  def new
+    @book = Book.find(params[:book_id])
+    @review = Review.new
+  end
+  def create
+    @book = Book.find(params[:book_id])
+    @review = @book.songs.new(review_param)
+    @review.save
+    redirect_to book_path(@book)
+  end
 
+  private
 
+  def review_params
+    params.require(:review).permit(:title, :username, :rating, :review_text)
+  end
+end
 end
