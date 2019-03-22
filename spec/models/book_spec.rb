@@ -38,25 +38,49 @@ RSpec.describe Book, type: :model do
       @r11 = @b5.reviews.create(title: "Review ", username: "BookGirl" , rating:2, review_text: "asdfjhlkjhglriuae")
       @r12 = @b6.reviews.create(title: "Review ", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
     end
+    # @a = Author.create(name: "Sam Sampson")
+    # @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 100, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
 
     describe ".avg_rating" do
-      expect(Book.avg_rating).to eq()
+      it "can calculate the average rating for abook" do
+        expect(Book.avg_rating(@b1.id).round(2)).to eq(3.24)
+      end
+    end
+
+    describe ".sort_by_avg_rating_asc" do
+      it "can sort the books by the average rating ascending" do
+        expect(Book.sort_by_avg_rating_asc).to eq()
+      end
+    end
+
+    describe ".sort_by_avg_rating_desc" do
+      it "can sort the books by the average rating descending" do
+        expect(Book.sort_by_avg_rating_desc).to eq()
+      end
     end
 
     describe ".sort_by_pages_asc" do
-      expect(Book.sort_by_pages_asc).to eq()
+      it "can sort the books by the pages ascending" do
+        expect(Book.sort_by_pages_asc).to eq()
+      end
     end
 
     describe ".sort_by_pages_desc" do
-      expect(Book.sort_by_pages_desc).to eq()
+      it "can sort the books by their pages descending" do
+        expect(Book.sort_by_pages_desc).to eq()
+      end
     end
 
     describe ".sort_by_rating_asc" do
-      expect(Book.sort_by_total_reviews_asc).to eq()
+      it "can sort the books by their total reviews ascending" do
+        expect(Book.sort_by_total_reviews_asc).to eq()
+      end
     end
 
     describe ".sort_by_rating_desc" do
-      expect(Book.sort_by_total_reviews_desc).to eq()
+      it "can sort the books by their total reviews descending" do
+        expect(Book.sort_by_total_reviews_desc).to eq()
+      end
     end
 
   end
