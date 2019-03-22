@@ -28,7 +28,6 @@ RSpec.describe Author, type: :model do
       expect(actual_list_1.last.name).to eq("Carl Sandberg")
       expect(actual_list_2.count).to eq(1)
       expect(actual_list_2.first.class).to eq(Author)
-
     end
 
   end
