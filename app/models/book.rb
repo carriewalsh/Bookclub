@@ -14,4 +14,8 @@ class Book < ApplicationRecord
     Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) ASC")
   end
 
+  def self.sort_by_total_reviews_desc
+    Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) DESC")
+  end
+
 end
