@@ -147,20 +147,17 @@ RSpec.describe "a user visiting books index page" do
     end
 
     xit "should show the book average rating" do
-      r1 = Review.create(title: "My Review", username: "BookGirl", rating:4, review_text: "BLalblahablahblah")
-      r2 = Review.create(title: "My Review Again", username: "BookGirl2", rating: 3, review_text: "BLalblahablahblah")
+
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("Average rating: 3.5") #fix number
+        expect(page).to have_content("Average Rating: 3.67") #fix number
       end
     end
 
-    xit "should show the book number of reviews" do
-      r1 = Review.create(title: "My Review", username: "BookGirl", rating:4, review_text: "BLalblahablahblah")
-      r2 = Review.create(title: "My Review Again", username: "BookGirl2", rating: 3, review_text: "BLalblahablahblah")
+    it "should show the book number of reviews" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("Total number of reviews: 2") #fix number
+        expect(page).to have_content("Total Reviews: 3") #fix number
       end
     end
 

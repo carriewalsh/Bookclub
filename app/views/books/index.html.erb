@@ -113,8 +113,13 @@
         <p>Pages: <%= book.pages %></p>
       </div>
       <div class="review-info">
-        <p>Average Rating: book.average_rating</p>  <!-- no class methods here...-->
-        <p>Total Reviews: book.review_count</p>
+        <p>Total Reviews: <%= book.reviews.count %></p>
+        <% if book.reviews.count == 0 %>
+
+          <p>Average Rating: none</p>
+        <% else %>
+          <p>Average Rating: <%= Book.avg_rating(book.id).round(2) %></p>  <!-- no class methods here...-->
+        <% end %>
       </div>
     </div>
     <br>
