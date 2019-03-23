@@ -12,9 +12,26 @@ class BooksController < ApplicationController
     @average_review_rating = @reviews.average(:rating)
   end
 
+
+  def new
+    @book = Book.new
+  end
+
+  def create
+    @book = Book.create(book_params)
+    @author = @book.authors.find_or_create_by(params[:authors])
+  end
+
   def destroy
     @book = Book.find(params[:id]).destroy
     redirect_to books_path
+  end
+
+private
+
+  def book_params
+    params.require(:book).permit(:title,:authors,:pages,:publication_year)
+
   end
 
 end

@@ -177,6 +177,14 @@ nav {
   grid-column: 3 / span 1;
 }
 
+.new-form {
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #3C618B;
+  padding: 10px;
+}
+
 #sort-button {
   border: none;
   background-color: black;
