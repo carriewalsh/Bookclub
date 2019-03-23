@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :books, only: [:index, :show, :destroy] do
     resources :reviews, only: [:new, :create]
+  end 
 end

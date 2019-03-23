@@ -138,7 +138,7 @@
   </div>
   <% @books.each do |book| %>
     <div class="book-card">
-      <h3><%=  link_to book.title, books_path %></h3> <!-- BOOK_path(book)-->
+      <h3><%=  link_to book.title, book_path(book.id) %></h3> <!-- BOOK_path(book)-->
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
         <p><%= book.authors %></p>

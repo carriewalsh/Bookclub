@@ -24,7 +24,6 @@ RSpec.describe 'book show page', type: :feature do
       expect(page).to have_content("Page Count: #{@book.pages}")
       #need to add image test (xpath?)
       #once html is done add within tests
-
     end
 
     it 'shows book statistics' do
