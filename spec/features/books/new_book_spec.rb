@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "new book workflow" do
   context "as a visitor" do
-    it "should create a new book successfully" do
+    xit "should create a new book successfully" do
       book_name = "Stewart Little"
       book_author = "E.B. White"
       book_pages = "128"
