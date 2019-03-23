@@ -11,10 +11,10 @@ RSpec.describe "As a visitor" do
 
       expect(current_path).to eq(new_book_review_path(@book.id))
 
-      fill_in 'title', with: 'Review Form'
-      fill_in 'username', with: "Ethan Grab"
-      fill_in 'rating', with: 3
-      fill_in 'review_text', with: "This book was average"
+      fill_in 'Title', with: 'Review Form'
+      fill_in 'Username', with: "Ethan Grab"
+      fill_in 'Rating', with: 3
+      fill_in 'review[review_text]', with: "This book was average"
 
       click_button 'Create Review'
 
