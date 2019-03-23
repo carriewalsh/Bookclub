@@ -104,11 +104,14 @@
 <div class="books-container">
 
   <% @books.each do |book| %>
+  <% binding.pry %>
     <div class="book-card">
       <h3><%=  link_to book.title, book_path(book.id) %></h3> <!-- BOOK_path(book)-->
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <p>Authors: <%= book.authors %></p>
+        <% book.authors.each do |author| %>
+        <p><%= author.name %></p>
+        <% end %>
         <p>Publication year: <%= book.publication_year %></p>
         <p>Pages: <%= book.pages %></p>
       </div>
