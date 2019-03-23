@@ -7,8 +7,9 @@ class Author < ApplicationRecord
   def make_author_list
     array = self.name.split(",")
     array.map do |author|
-      Author.create(name: author.strip)
+      Author.find_or_create_by(name: author.titleize.strip)
     end
   end
 
 end
+# Book.create(askjjasd;lfk, authors: [@author_1, @author_3])

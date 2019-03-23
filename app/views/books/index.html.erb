@@ -26,7 +26,7 @@
 
 <section class="statistics">
   <div class="highest-rated">
-    <h2>Highest rated books:</h2>
+    <h2>Highest-rated Books</h2>
     <div class="book-snippet">
       <h3>Gone with the Wind</h3>
       <p>Average rating: 4.5</p>
@@ -51,7 +51,7 @@
   </div>
 
   <div class="lowest-rated">
-    <h2>Lowest rated books:</h2>
+    <h2>Lowest-rated Books</h2>
     <div class="book-snippet">
       <h3>Gone with the Wind</h3>
       <p>Average rating: 4.5</p>
@@ -102,51 +102,19 @@
 </section>
 
 <div class="books-container">
-  <div class="book-card">
-    <h3>Book 1</h3>
-            <img src=https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg class="book-cover" alt="cover of Book 1">
-    <div class="basic-info">
-      <p>Joe Schmo, John Schmo</p>
-      <br>
-      <p>Publication year: 1995</p>
-      <br>
-      <p>100 page</p>
-    </div>
-    <div class="review-info">
-      <p>Average Rating: 3.3</p>
-      <br>
-      <p>Total Reviews: 4</p>
-    </div>
-  </div>
-  <br>
-  <div class="book-card">
-    <h3>Book 1</h3>
-            <img src=https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg class="book-cover" alt="cover of Book 1">
-    <div class="basic-info">
-      <p>Joe Schmo, John Schmo</p>
-      <br>
-      <p>Publication year: 1995</p>
-      <br>
-      <p>100 page</p>
-    </div>
-    <div class="review-info">
-      <p>Average Rating: 3.3</p>
-      <br>
-      <p>Total Reviews: 4</p>
-    </div>
-  </div>
+
   <% @books.each do |book| %>
     <div class="book-card">
       <h3><%=  link_to book.title, books_path %></h3> <!-- BOOK_path(book)-->
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <p><%= book.authors %></p>
-        <p><%= book.publication_year %></p>
-        <p><%= book.pages %></p>
+        <p>Authors: <%= book.authors %></p>
+        <p>Publication year: <%= book.publication_year %></p>
+        <p>Pages: <%= book.pages %></p>
       </div>
       <div class="review-info">
-        <p>Average Rating: book.average_rating</p>  <!-- may  need to change methods-->
-        <p>Total Reviews: book.review_count</p>
+        <p>Total Reviews: <%= book.reviews.count %></p>
+          <p>Average Rating: <%= book.avg_rating %></p>
       </div>
     </div>
     <br>
