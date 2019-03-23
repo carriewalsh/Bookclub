@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
   def create
     @book = Book.find(params[:book_id])
-    @review = @book.songs.new(review_param)
+    @review = @book.reviews.new(review_params)
     @review.save
     redirect_to book_path(@book)
   end

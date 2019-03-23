@@ -55,7 +55,6 @@ author_18 = book_2.authors.create(name: "Ramiro Vaca")
 author_19 = book_3.authors.create(name: "Smitha Hosmani")
 author_20 = book_4.authors.create(name: "Michael Karnes")
 
-
 review_1 = book_1.reviews.create(username: 'User 1', title: 'Review 1', rating: 4, review_text: "This book is great")
 review_2 = book_1.reviews.create(username: 'User 2', title: 'Review 2', rating: 1, review_text: "This book is terrible")
 review_3 = book_1.reviews.create(username: 'User 3', title: 'Review 3', rating: 3, review_text: "This book is average")
