@@ -11,7 +11,11 @@ class Book < ApplicationRecord
   # end
 
   def avg_rating
-    reviews.average(:rating)
+    if reviews.count == 0
+      p "none"
+    else
+      reviews.average(:rating).round(2)
+    end
   end
 
 

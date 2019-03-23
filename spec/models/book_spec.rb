@@ -45,10 +45,10 @@ RSpec.describe Book, type: :model do
 
     describe ".avg_rating" do
       it "can calculate the average rating for abook" do
-        expect(@b1.avg_rating.round(2)).to eq(4.75)
-        expect(@b2.avg_rating.round(2)).to eq(3.67)
-        expect(@b5.avg_rating.round(2)).to eq(1.5)
-        expect(@b7.avg_rating).to eq(nil)
+        expect(@b1.avg_rating).to eq(4.75)
+        expect(@b2.avg_rating).to eq(3.67)
+        expect(@b5.avg_rating).to eq(1.5)
+        expect(@b7.avg_rating).to eq("none")
       end
     end
 
