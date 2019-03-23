@@ -70,31 +70,21 @@ RSpec.describe Book, type: :model do
       end
     end
 
-    describe ".sort_by_pages_asc" do
+    describe ".sort_by" do
       it "can sort the books by the pages ascending" do
-        expect(Book.sort_by_pages_asc.last.title).to eq("Title 4")
-        expect(Book.sort_by_pages_asc.first.title).to eq("Title 1")
+        expect(Book.sort_by(:pages,:asc).last.title).to eq("Title 4")
+        expect(Book.sort_by(:pages,:asc).first.title).to eq("Title 1")
       end
-    end
-
-    describe ".sort_by_pages_desc" do
       it "can sort the books by their pages descending" do
-        expect(Book.sort_by_pages_desc.first.title).to eq("Title 4")
-        expect(Book.sort_by_pages_desc.last.title).to eq("Title 1")
+        expect(Book.sort_by(:pages,:desc).first.title).to eq("Title 4")
+        expect(Book.sort_by(:pages,:desc).last.title).to eq("Title 1")
       end
-    end
-
-    describe ".sort_by_total_reviews_asc" do
       it "can sort the books by their total reviews ascending" do
-        expect(Book.sort_by_total_reviews_asc.last.title).to eq("Title 1")
+        expect(Book.sort_by(:reviews,:asc).last.title).to eq("Title 1")
       end
-    end
-
-    describe ".sort_by_total_reviews_desc" do
       it "can sort the books by their total reviews descending" do
-        expect(Book.sort_by_total_reviews_desc.first.title).to eq("Title 1")
+        expect(Book.sort_by(:reviews,:desc).first.title).to eq("Title 1")
       end
     end
-
   end
 end

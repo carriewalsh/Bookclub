@@ -63,16 +63,11 @@ class Book < ApplicationRecord
     Book.order(pages: :asc)
   end
 
-  def self.sort_by_pages_desc
-    Book.order(pages: :desc)
+  def self.sort_by(topic, direction)
+    if topic == :pages
+      Book.order(:pages => direction)
+    elsif topic == :reviews
+      Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) #{direction}")
+    end
   end
-
-  def self.sort_by_total_reviews_asc
-    Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) ASC")
-  end
-
-  def self.sort_by_total_reviews_desc
-    Book.left_outer_joins(:reviews).group("books.id").order("count(reviews.id) DESC")
-  end
-
 end
