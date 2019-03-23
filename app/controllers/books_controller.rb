@@ -21,10 +21,11 @@ class BooksController < ApplicationController
     @book = Book.create(book_params)
     @author = @book.authors.find_or_create_by(params[:authors])
   end
-  
-    def destroy
+
+  def destroy
     @book = Book.find(params[:id]).destroy
     redirect_to :books
+  end
 
 private
 

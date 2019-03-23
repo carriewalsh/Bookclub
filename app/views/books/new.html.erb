@@ -1,24 +1,15 @@
-<header>
-  <nav>
-    <p><%= link_to "Home", root_path %></p>
-    <p><%= link_to "Books", books_path %></p>
-  </nav>
-</header>
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-<div class="new-form">
-  <%= form_for @book do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <%= f.label :authors %>
+  <%= text_field_tag :authors %>
 
-    <%= f.label :authors %>
-    <%= text_field_tag :authors %>
+  <%= f.label :publication_year %>
+  <%= f.number_field :publication_year %>
 
-    <%= f.label :publication_year %>
-    <%= f.number_field :publication_year %>
+  <%= f.label :pages %>
+  <%= f.number_field :pages %>
 
-    <%= f.label :pages %>
-    <%= f.number_field :pages %>
-
-    <%= f.submit %>
-  <% end %>
-</div>
+  <%= f.submit %>
+<% end %>
