@@ -4,7 +4,7 @@ class Author < ApplicationRecord
 
   validates_presence_of :name
 
-  def self.make_author_list(author_list)
+  def make_author_list
     array = self.name.split(",")
     array.map do |author|
       Author.find_or_create_by(name: author.titleize.strip)
