@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "a user visiting books index page" do
   before :each do
     @a = Author.create(name: "Sam Sampson")
-    @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 1, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
     @b2 = @a.books.create(title: "Title 2", publication_year: 1996, pages: 200, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
+    @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 1, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
     @b3 = @a.books.create(title: "Title 3", publication_year: 1996, pages: 300, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
     @b4 = @a.books.create(title: "Title 4", publication_year: 1996, pages: 400, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
     @b5 = @a.books.create(title: "Title 5", publication_year: 1996, pages: 350, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
@@ -112,14 +112,14 @@ RSpec.describe "a user visiting books index page" do
     it "should show the book title" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("Book 1")
+        expect(page).to have_content("Title 2")
       end
     end
 
     xit "should link to book page from title" do
       visit books_path
       within first ".book-card" do
-        click_link "Book 1"
+        click_link "Title 2"
         expect(current_path).to eq book_path(book)
       end
     end
@@ -127,14 +127,14 @@ RSpec.describe "a user visiting books index page" do
     it "should show the book publication year" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content(1995)
+        expect(page).to have_content("Publication year: 1996")
       end
     end
 
     it "should show the book pages count" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content(100)
+        expect(page).to have_content("Pages: 200")
       end
     end
 

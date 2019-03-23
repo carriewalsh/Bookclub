@@ -102,18 +102,18 @@
 </section>
 
 <div class="books-container">
-  
+
   <% @books.each do |book| %>
     <div class="book-card">
       <h3><%=  link_to book.title, books_path %></h3> <!-- BOOK_path(book)-->
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <p><%= book.authors %></p>
-        <p><%= book.publication_year %></p>
-        <p><%= book.pages %></p>
+        <p>Authors: <%= book.authors %></p>
+        <p>Publication year: <%= book.publication_year %></p>
+        <p>Pages: <%= book.pages %></p>
       </div>
       <div class="review-info">
-        <p>Average Rating: book.average_rating</p>  <!-- may  need to change methods-->
+        <p>Average Rating: book.average_rating</p>  <!-- no class methods here...-->
         <p>Total Reviews: book.review_count</p>
       </div>
     </div>
