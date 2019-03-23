@@ -42,21 +42,18 @@ RSpec.describe Book, type: :model do
       @r12 = @b5.reviews.create(title: "Review 11", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
       @r13 = @b6.reviews.create(title: "Review 12", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
     end
-    # @a = Author.create(name: "Sam Sampson")
-    # @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 100, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
 
     describe ".avg_rating" do
       it "can calculate the average rating for abook" do
-        expect(Book.avg_rating(@b1.id).round(2)).to eq(4.75)
-        expect(Book.avg_rating(@b2.id).round(2)).to eq(3.67)
-        expect(Book.avg_rating(@b5.id).round(2)).to eq(1.5)
-        expect(Book.avg_rating(@b7.id)).to eq(nil)
+        expect(@b1.avg_rating.round(2)).to eq(4.75)
+        expect(@b2.avg_rating.round(2)).to eq(3.67)
+        expect(@b5.avg_rating.round(2)).to eq(1.5)
+        expect(@b7.avg_rating).to eq(nil)
       end
     end
 
     describe ".sort_by_avg_rating_asc" do
       it "can sort the books by the average rating ascending" do
-        # binding.pry
         # expect(Book.sort_by_avg_rating_asc).to eq([@b1,@b3])
         #can do .to include(adksfjasdkf) (if they have the same rating)
         expect(Book.sort_by_avg_rating_asc.last.title).to eq("Title 1")

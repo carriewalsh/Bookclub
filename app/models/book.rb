@@ -6,8 +6,12 @@ class Book < ApplicationRecord
 
   validates_presence_of :title, :publication_year, :pages, :cover_image
 
-  def self.avg_rating(book_id)
-    Review.where("reviews.book_id = #{book_id}").average(:rating)
+  # def self.avg_rating(book_id)
+  #   Review.where("reviews.book_id = #{book_id}").average(:rating)
+  # end
+
+  def avg_rating
+    reviews.average(:rating)
   end
 
 

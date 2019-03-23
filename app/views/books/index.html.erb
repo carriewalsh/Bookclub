@@ -118,7 +118,7 @@
 
           <p>Average Rating: none</p>
         <% else %>
-          <p>Average Rating: <%= Book.avg_rating(book.id).round(2) %></p>  <!-- no class methods here...-->
+          <p>Average Rating: <%= book.avg_rating.round(2) %></p>  <!-- no class methods here...-->
         <% end %>
       </div>
     </div>
