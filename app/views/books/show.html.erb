@@ -42,7 +42,7 @@
 <% @reviews.each do |review| %>
   <ul>
     <li>Review Title: <%= review.title %></li>
-    <li>Username: <%= review.username %></li>
+    <li><%=  link_to review.username, review_path(review.id) %></li>
     <li>Rating: <%= review.rating %></li>
     <li>Review: <%= review.review_text %></li>
     <br/>
