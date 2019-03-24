@@ -12,7 +12,7 @@ class Book < ApplicationRecord
 
   def avg_rating
     if reviews.count == 0
-      p "none"
+      p "No reviews"
     else
       reviews.average(:rating).round(2)
     end
@@ -20,31 +20,43 @@ class Book < ApplicationRecord
 
 
 # make this one method with lots of arguments(how many, asc/desc/ other?) limit(Book.all.count)
-  def self.sort_by_avg_rating_asc
-    book_array = []
-    no_reviews = Book.all.find_all {|book| book.reviews == []}
-    book_array << no_reviews
-    book_array.flatten!
+#   def self.sort_by_avg_rating_asc
+#     book_array = []
+#     no_reviews = Book.all.find_all {|book| book.reviews == []}
+#     book_array << no_reviews
+#     book_array.flatten!
+#
+#     low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
+#     low_high.each do |bk_id,avg_rating|
+#       book_array << Book.find(bk_id)
+#     end
+#     book_array
+#   end
 
-    low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
-    low_high.each do |bk_id,avg_rating|
-      book_array << Book.find(bk_id)
+  # def self.sort_by_avg_rating_desc
+  #   book_array = []
+  #   no_reviews = Book.all.find_all {|book| book.reviews == []}
+  #   book_array << no_reviews
+  #   book_array.flatten!
+  #
+  #   low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
+  #   low_high.each do |bk_id,avg_rating|
+  #     book_array << Book.find(bk_id)
+  #   end
+  #   book_array
+  # end
+
+
+
+  def self.sort_by_avg_rating(direction)
+    arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
+    if direction == :desc
+      arr
+    elsif direction == :asc
+      arr.reverse
     end
-    book_array
   end
 
-  def self.sort_by_avg_rating_desc
-    book_array = []
-    no_reviews = Book.all.find_all {|book| book.reviews == []}
-    book_array << no_reviews
-    book_array.flatten!
-
-    low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
-    low_high.each do |bk_id,avg_rating|
-      book_array << Book.find(bk_id)
-    end
-    book_array
-  end
 
 
 # Book.includes(:reviews).order("reviews.rating").group("books.id","reviews.rating").average("reviews.rating").keys #array of book_id and ratings (inlude nil)
