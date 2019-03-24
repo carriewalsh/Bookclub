@@ -2,28 +2,29 @@
 <%= link_to 'Add Review', new_book_review_path(@book.id) %>
 
 
-
+<h2> Top Reviews: </h2>
 <ul>
-  <li>Top Reviews: </li>
   <% @top_three_reviews.each do |review| %>
     <li>Review Title: <%= review.title %></li>
     <li>Rating: <%= review.rating %></li>
     <li>User: <%= review.username %></li>
+    <br/>
   <% end %>
 </ul>
 
+<h2> Negative Reviews: </h2>
+
 <ul>
-  <li>Negative Reviews: </li>
   <% @worst_three_reviews.each do |review| %>
     <li>Review Title: <%= review.title %></li>
     <li>Rating: <%= review.rating %></li>
     <li>User: <%= review.username %></li>
+    <br/>
   <% end %>
 </ul>
 
-<ul>
-  <li>Average Review Rating: <%= @average_review_rating %></li>
-</ul>
+<h2>Average Review Rating: <%= @average_review_rating %></h2>
+
 
 
 
@@ -35,6 +36,7 @@
     <% end %>
   <li>Publication Year: <%= @book.publication_year %></li>
   <li>Page Count: <%= @book.pages %></li>
+  <br/>
 </ul>
 
 <% @reviews.each do |review| %>
@@ -43,5 +45,6 @@
     <li>Username: <%= review.username %></li>
     <li>Rating: <%= review.rating %></li>
     <li>Review: <%= review.review_text %></li>
+    <br/>
   </ul>
 <% end %>

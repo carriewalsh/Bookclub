@@ -6,6 +6,6 @@ class Review < ApplicationRecord
                         :rating,
                         :review_text
 
-
+                        
 
 end
