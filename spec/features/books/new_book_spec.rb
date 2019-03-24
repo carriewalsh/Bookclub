@@ -17,10 +17,11 @@ RSpec.describe "new book workflow" do
       fill_in :authors, with: book_author
       fill_in "Pages", with: book_pages
       fill_in "Publication year", with: book_year
-      fill_in "Cover image", with: book_image
+
 
 
       click_button "Create Book"
+      # expect(params[:book][:cover_image]).to eq book_image how do I check this sad path?
       expect(current_path).to eq books_path
 
     end

@@ -1,15 +1,15 @@
 <%= form_for @book do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, required: true %>
 
   <%= f.label :authors %>
-  <%= text_field_tag :authors %>
+  <%= text_field_tag :authors, nil, required: true %>
 
   <%= f.label :publication_year %>
-  <%= f.number_field :publication_year %>
+  <%= f.number_field :publication_year, required: true %>
 
   <%= f.label :pages %>
-  <%= f.number_field :pages %>
+  <%= f.number_field :pages, required: true %>
 
   <%= f.label :cover_image %>
   <%= f.text_field :cover_image %>
