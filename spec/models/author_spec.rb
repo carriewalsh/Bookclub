@@ -11,7 +11,7 @@ RSpec.describe Author, type: :model do
     it { should validate_presence_of :name }
   end
 
-  describe "Instance Methods" do
+  describe "Class Methods" do
     it "creates a list of authors from a string" do
       author_string_1 = "E.B. White, Carl Sandberg"
       author_string_2 = "J.K. Rowling"

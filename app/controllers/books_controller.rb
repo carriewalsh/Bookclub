@@ -19,7 +19,9 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.create(book_params)
-    @author = book_params(authors).make_author_list
+    @authors = Author.make_author_list(author_params)
+    @book.authors << @authors
+
   end
 
   def destroy
@@ -30,8 +32,11 @@ class BooksController < ApplicationController
 private
 
   def book_params
-    params.require(:book).permit(:title,:authors,:pages,:publication_year)
+    params.require(:book).permit(:title,:authors,:pages,:publication_year,:cover_image)
+  end
 
+  def author_params
+    params.require(:authors) #idk if I can have a permit here...
   end
 
 end
