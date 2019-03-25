@@ -1,9 +1,32 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
     @top_3 = Book.sort_by_avg_rating(:desc,:with).take(3)
     @bottom_3 = Book.sort_by_avg_rating(:asc,:without).take(3)
-    #@top_reviewers = 
+    #@top_reviewers =
+    if params.has_key?("sort")
+      binding.pry
+      if params[:sort] = "Best Average Rating"
+        binding.pry
+        @books = Book.sort_by_avg_rating(:desc,:with)
+      elsif params[:sort] = "Worst Average Rating"
+        binding.pry
+        @books = Book.sort_by_avg_rating(:asc,:with)
+      elsif params[:sort] = "Most Pages"
+        binding.pry
+        @books = Book.sort_by(:pages,:desc)
+      elsif params[:sort] = "Fewest Pages"
+        binding.pry
+        @books = Book.sort_by(:pages,:asc)
+      elsif params[:sort] = "Most Reviews"
+        binding.pry
+        @books = Book.sort_by(:reviews,:desc)
+      elsif params[:sort] = "Fewest Reviews"
+        binding.pry
+        @books = Book.sort_by(:reviews,:asc)
+      end
+    else
+      @books = Book.all
+    end
   end
 
   def show
