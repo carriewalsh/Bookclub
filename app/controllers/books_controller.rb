@@ -1,13 +1,13 @@
 class BooksController < ApplicationController
   def index
-    @top_3 = Book.sort_by_avg_rating(:desc,:with).take(3)
-    @bottom_3 = Book.sort_by_avg_rating(:asc,:without).take(3)
+    @top_3 = Book.sort_by_avg_rating(:desc).take(3)
+    @bottom_3 = Book.sort_by_avg_rating(:asc).take(3)
     #@top_reviewers =
     if params.has_key?("sort")
       if params[:sort] == "Best Average Rating"
-        @books = Book.sort_by_avg_rating(:desc,:with)
+        @books = Book.sort_by_avg_rating(:desc)
       elsif params[:sort] == "Worst Average Rating"
-        @books = Book.sort_by_avg_rating(:asc,:with)
+        @books = Book.sort_by_avg_rating(:asc)
       elsif params[:sort] == "Most Pages"
         @books = Book.sort_by(:pages,:desc)
       elsif params[:sort] == "Fewest Pages"
