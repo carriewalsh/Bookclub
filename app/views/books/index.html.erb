@@ -28,14 +28,13 @@
     <%= link_to "Add Book", new_book_path, {id: "add-book"} %>
     <!-- I don't know how to do this for a get form or do this a different way -->
   </section>
-</header>
 
 <section class="statistics">
   <div class="highest-rated">
     <h2>Highest-rated Books</h2>
     <% @top_3.each do |book| %>
       <div class="book-snippet">
-        <h3><%= book.title %></h3>
+        <h3><%= link_to book.title, book_path(book) %></h3>
         <p>Average rating: <%= book.avg_rating %></p>
       </div>
     <% end %>
@@ -54,7 +53,7 @@
     <h2>Lowest-rated Books</h2>
     <% @bottom_3.each do |book| %>
       <div class="book-snippet">
-        <h3><%= book.title %></h3>
+        <h3><%= link_to book.title, book_path(book) %></h3>
         <p>Average rating: <%= book.avg_rating %></p>
       </div>
     <% end %>
@@ -71,18 +70,12 @@
 
   <div class="top-reviewers">
     <h2>Top Reviewers</h2>
-    <div class="user-snippet">
-      <h3>Jon Bon Jovi</h3>
-      <p>Total Reviews: 20</p>
-    </div>
-    <div class="user-snippet">
-      <h3>Jon Bon Jovi</h3>
-      <p>Total Reviews: 20</p>
-    </div>
-    <div class="user-snippet">
-      <h3>Jon Bon Jovi</h3>
-      <p>Total Reviews: 500</p>
-    </div>
+    <% @reviewers.each do |reviewer| %>
+      <div class="user-snippet">
+        <h3><%= link_to reviewer.username, review_path(reviewer.username) %></h3>
+        <p>Total Reviews: <%= reviewer.review_count %></p>
+      </div>
+    <% end %>
     <!-- <div class="user-snippet"> -->
       <!-- this should have username and number of ratings  -->
     <!-- </div> -->
@@ -94,6 +87,7 @@
     <!-- </div> -->
   </div>
 </section>
+</header>
 
 <div class="books-container">
 

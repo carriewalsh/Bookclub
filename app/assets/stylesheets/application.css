@@ -112,8 +112,6 @@ header h2 {
   align-items: center;
   padding-top:5px;
   padding-bottom:5px;
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 .statistics {
@@ -126,7 +124,6 @@ header h2 {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 8em;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -180,6 +177,7 @@ header h2 {
 .books-container {
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 25vw;
 }
 
 .book-card {

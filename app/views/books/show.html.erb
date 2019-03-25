@@ -1,3 +1,10 @@
+<header>
+  <nav>
+    <p><%= link_to "Home", root_path %></p>
+    <p><%= link_to "Books", books_path %></p>
+  </nav>
+</header>
+
 <%= link_to 'Delete', book_path(@book.id), method: :delete %>
 <%= link_to 'Add Review', new_book_review_path(@book.id) %>
 
