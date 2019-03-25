@@ -1,0 +1,10 @@
+<% @reviews.each do |review| %>
+  <ul>
+    <li>Review Title: <%= review.title %></li>
+    <li>Review: <%= review.review_text %></li>
+    <li>Rating: <%= review.rating %></li>
+    <li>Date written: <%= review.created_at %></li>
+    <li><%= link_to review.book.title, book_path(review.book_id) %></li>
+    <img src=<%= review.book.cover_image %> class="book-cover" alt="cover of <%= review.book.title %>">
+  </ul>
+<% end %>
