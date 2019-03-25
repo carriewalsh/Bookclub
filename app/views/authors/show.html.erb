@@ -1,0 +1,35 @@
+<header>
+  <nav>
+    <p><%= link_to "Home", root_path %></p>
+    <p><%= link_to "Books", books_path %></p>
+  </nav>
+  <section class="toggle">
+    <%= link_to "Delete Author", books_path, {id: "add-book"} %>
+  </section>
+  <h2><%= @author.name %></h2>
+</header>
+
+<div class="author-container">
+  <div class="book-card">
+  <% @books.each do |book| %>
+    <h3><%= link_to book.title, book_path(book) %></h3>
+    <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
+    <div class="basic-info">
+      <p><% book.other_authors(@author).each do |author| %></p>
+        <%= link_to author.name, author_path(author) %>
+      <% end %>
+      <p>Publication year: <%= book.publication_year %></p>
+      <p>Pages: <%= book.pages %></p>
+    </div>
+    <div class="review-info">
+
+      <% if book.top_review != nil %>
+        <p>Top Review: <%= book.top_review.title %></p>
+        <p><%= book.top_review.username %></p>
+        <p><%= book.top_review.rating %></p>
+        <p><%= book.top_review.review_text %></p>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>

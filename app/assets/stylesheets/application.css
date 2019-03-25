@@ -37,8 +37,16 @@ nav {
  justify-content: space-around;
  padding-left: 20vw;
  padding-right: 20vw;
- padding-top: 2vw;
- padding-bottom: 2vw;
+ padding-top: 1em;
+ padding-bottom: 1em;
+}
+
+header h2 {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 2em;
+  color: white;
+  background: #3C618B;
 }
 
  nav a{
@@ -70,6 +78,7 @@ nav {
 
  .toggle h2 {
    font-size: 1em;
+   background-color: transparent;
  }
 
  .book-card a {
@@ -214,6 +223,10 @@ nav {
   background-color: #3C618B;
   padding: 10px;
   border-radius: 5px;
+}
+
+.author-container {
+  margin-top: 8.4em;
 }
 
 #sort-button {

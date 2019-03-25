@@ -18,6 +18,14 @@ class Book < ApplicationRecord
     end
   end
 
+  def top_review
+    reviews.order(rating: :desc).take
+  end
+
+  def other_authors(author)
+    authors.where.not("authors.name": author.name)
+  end
+
 
 #   def self.sort_by_avg_rating_asc
 #     book_array = []
@@ -48,10 +56,9 @@ class Book < ApplicationRecord
 
 
   def self.sort_by_avg_rating(direction, null)
-    if null = :without
+    if null == :without
       arr = joins(:reviews).group('books.id').order('avg(reviews.rating) DESC')
-    elsif null = :with
-      binding.pry
+    elsif null == :with
       arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
     end
     if direction == :desc

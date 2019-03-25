@@ -18,8 +18,10 @@ RSpec.describe Book, type: :model do
   describe "Class Methods" do
     before :each do
       @a = Author.create(name: "Sam Sampson")
+      @a2 = Author.create(name: "Don Donson")
       @b2 = @a.books.create(title: "Title 2", publication_year: 1996, pages: 200, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 1, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
+      @b1.authors << @a2
       @b3 = @a.books.create(title: "Title 3", publication_year: 1996, pages: 300, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b4 = @a.books.create(title: "Title 4", publication_year: 1996, pages: 400, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b5 = @a.books.create(title: "Title 5", publication_year: 1996, pages: 350, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
@@ -27,7 +29,7 @@ RSpec.describe Book, type: :model do
       @b7 = @a.books.create(title: "Title 7", publication_year: 1996, pages: 250, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
 
 
-      @r0 = @b1.reviews.create(title: "Review 0", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhglriuae")
+      @r0 = @b1.reviews.create(title: "Review 0", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhasdglriuae")
       @r1 = @b1.reviews.create(title: "Review 1", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhglriuae")
       @r2 = @b1.reviews.create(title: "Review 2", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhglriuae")
       @r3 = @b1.reviews.create(title: "Review 3", username: "BookGirl" , rating:4, review_text: "asdfjhlkjhglriuae")
@@ -52,13 +54,25 @@ RSpec.describe Book, type: :model do
       end
     end
 
+    describe ".top_review" do
+      it "lists one top review" do
+        expect(@b1.top_review).to eq(@r0)
+      end
+    end
+
+    describe ".other_authors" do
+      it "lists the other authors based on an author arg" do
+        expect(@b1.other_authors(@a)).to eq([@a2])
+      end
+    end
+
     describe ".sort_by_avg_rating_asc" do
       it "can sort the books by the average rating ascending" do
         # expect(Book.sort_by_avg_rating_asc).to eq([@b1,@b3])
         #can do .to include(adksfjasdkf) (if they have the same rating)
         expect(Book.sort_by_avg_rating(:asc, :with).last.title).to eq("Title 1")
-        expect(Book.sort_by_avg_rating(:asc, :with)[1].title).to eq("Title 5") #should this show non-reviewed
-        expect(Book.sort_by_avg_rating(:asc, :with).first.title).to eq("Title 6")
+        expect(Book.sort_by_avg_rating(:asc, :with)[1].title).to eq("Title 6")
+        expect(Book.sort_by_avg_rating(:asc, :with).first.title).to eq("Title 7")
       end
     end
 
