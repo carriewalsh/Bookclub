@@ -7,6 +7,12 @@
   <section class="toggle">
     <h2>Sort Books By:</h2>
     <form class=".sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Best Average Rating">
+    </form>
+    <form class=".sort-form" action="/books" method="get">
+      <input id="sort-button" type="submit" name="sort" value="Worst Average Rating">
+    </form>
+    <form class=".sort-form" action="/books" method="get">
       <input id="sort-button" type="submit" name="sort" value="Most Pages">
     </form>
     <form class="sort-form" action="/books" method="get">
@@ -27,18 +33,12 @@
 <section class="statistics">
   <div class="highest-rated">
     <h2>Highest-rated Books</h2>
-    <div class="book-snippet">
-      <h3>Gone with the Wind</h3>
-      <p>Average rating: 4.5</p>
-    </div>
-    <div class="book-snippet">
-      <h3>Gone with the Wind</h3>
-      <p>Average rating: 4.5</p>
-    </div>
-    <div class="book-snippet">
-      <h3>Gone with the Wind</h3>
-      <p>Average rating: 4.5</p>
-    </div>
+    <% @top_3.each do |book| %>
+      <div class="book-snippet">
+        <h3><%= book.title %></h3>
+        <p>Average rating: <%= book.avg_rating %></p>
+      </div>
+    <% end %>
     <!-- <div class="book-snippet"> -->
       <!-- this should have the title and rating  -->
     <!-- </div>
@@ -52,18 +52,12 @@
 
   <div class="lowest-rated">
     <h2>Lowest-rated Books</h2>
-    <div class="book-snippet">
-      <h3>Gone with the Wind</h3>
-      <p>Average rating: 4.5</p>
-    </div>
-    <div class="book-snippet">
-      <h3>Gone with the Wind</h3>
-      <p>Average rating: 4.5</p>
-    </div>
-    <div class="book-snippet">
-      <h3>Gone wita sgarhaewrhas derehsd etrhser</h3>
-      <p>Average rating: 4.5</p>
-    </div>
+    <% @bottom_3.each do |book| %>
+      <div class="book-snippet">
+        <h3><%= book.title %></h3>
+        <p>Average rating: <%= book.avg_rating %></p>
+      </div>
+    <% end %>
     <!-- <div class="book-snippet"> -->
       <!-- this should have the title and rating  -->
     <!-- </div>
@@ -105,13 +99,14 @@
 
   <% @books.each do |book| %>
     <div class="book-card">
-      <h3><%=  link_to book.title, book_path(book.id) %></h3> <!-- BOOK_path(book)-->
+      <h3><%=  link_to book.title, book_path(book) %></h3>
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <p>Authors: </p>
-        <% book.authors.each do |author| %>
-        <p><%= author.name %></p>
-        <% end %>
+        <p>Authors: <% book.authors.each do |author| %>
+          <!--! link_to author.name, author_path(author) -->
+          <%= author.name %>
+          <br>
+        <% end %></p>
         <p>Publication year: <%= book.publication_year %></p>
         <p>Pages: <%= book.pages %></p>
       </div>

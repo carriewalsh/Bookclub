@@ -19,7 +19,6 @@ class Book < ApplicationRecord
   end
 
 
-# make this one method with lots of arguments(how many, asc/desc/ other?) limit(Book.all.count)
 #   def self.sort_by_avg_rating_asc
 #     book_array = []
 #     no_reviews = Book.all.find_all {|book| book.reviews == []}
@@ -48,28 +47,19 @@ class Book < ApplicationRecord
 
 
 
-  def self.sort_by_avg_rating(direction)
-    arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
+  def self.sort_by_avg_rating(direction, null)
+    if null = :without
+      arr = joins(:reviews).group('books.id').order('avg(reviews.rating) DESC')
+    elsif null = :with
+      binding.pry
+      arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
+    end
     if direction == :desc
       arr
     elsif direction == :asc
       arr.reverse
     end
   end
-
-
-
-# Book.includes(:reviews).order("reviews.rating").group("books.id","reviews.rating").average("reviews.rating").keys #array of book_id and ratings (inlude nil)
-# Review.group(:book_id).average(:rating) #array of book_id and avg rating (no nil)
-#
-#
-#     Book.includes(:reviews).order("reviews.rating").group(:books,"reviews.rating").average("reviews.rating").keys
-#     Book.select("reviews.*","books.*").includes(:reviews).order("reviews.rating").
-#     # Get the books and their reviews. Average the ratings for each book. Order the books by that average rating. Return the books.
-#     Book.select("books.id, average(reviews.rating)").joins(:reviews).group("books.id").order("average(reviews.rating")
-#     Book.select("books.id, average(reviews.rating)").includes(:reviews).group("books.id").order("average(reviews.rating")
-#     #ish!
-#     #this gives me a hash of the books and their average rating
 
   def self.sort_by_pages_asc
     Book.order(pages: :asc)
