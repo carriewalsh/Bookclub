@@ -38,10 +38,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
+    @book.title = @book.title.titleize
+    @book.save
     @authors = Author.make_author_list(author_params)
     @book.authors << @authors
-    redirect_to book_path(@book)
+    redirect_to book_path(Book.find_by(title: @book.title))
   end
 
   def destroy
