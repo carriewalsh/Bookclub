@@ -14,7 +14,7 @@
   <% @top_three_reviews.each do |review| %>
     <li>Review Title: <%= review.title %></li>
     <li>Rating: <%= review.rating %></li>
-    <li>User: <%= review.username %></li>
+    <li>User: <%= link_to review.username, review_path(review.username) %></li>
     <br/>
   <% end %>
 </ul>
@@ -25,26 +25,29 @@
   <% @worst_three_reviews.each do |review| %>
     <li>Review Title: <%= review.title %></li>
     <li>Rating: <%= review.rating %></li>
-    <li>User: <%= review.username %></li>
+    <li>User: <%= link_to review.username, review_path(review.username) %></li>
     <br/>
   <% end %>
 </ul>
-
-<h2>Average Review Rating: <%= @average_review_rating %></h2>
-<br/>
-
+<% if @average_review_rating %>
+  <h2>Average Review Rating: <%= @average_review_rating.round(2) %></h2>
+  <br/>
+<% end %>
 
 
 <ul>
   <li>Title: <%= @book.title %></li>
   <li>Author(s): </li>
     <% @authors.each do |author| %>
-    <li><%= author.name %></li>
+    <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
   <li>Publication Year: <%= @book.publication_year %></li>
   <li>Page Count: <%= @book.pages %></li>
   <br/>
 </ul>
+<div class="book-image">
+  <img src="<%= @book.cover_image %>" alt="cover of <%= @book.title %>">
+</div>
 
 <% @reviews.each do |review| %>
   <ul>

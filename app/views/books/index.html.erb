@@ -96,7 +96,7 @@
       <h3><%=  link_to book.title, book_path(book) %></h3>
       <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
       <div class="basic-info">
-        <p>Authors: <% book.authors.each do |author| %>
+        <p>Author(s): <% book.authors.each do |author| %>
           <!--! link_to author.name, author_path(author) -->
           <%= link_to author.name, author_path(author) %>
           <br>

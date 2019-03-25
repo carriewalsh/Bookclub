@@ -41,7 +41,7 @@ class BooksController < ApplicationController
     @book = Book.create(book_params)
     @authors = Author.make_author_list(author_params)
     @book.authors << @authors
-
+    redirect_to book_path(@book)
   end
 
   def destroy
@@ -53,7 +53,7 @@ private
 
   def book_params
 
-    if params[:book][:cover_image] == nil
+    if params[:book][:cover_image] == ""
       params[:book][:cover_image] = "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
     end
     params.require(:book).permit(:title,:authors,:pages,:publication_year,:cover_image)
