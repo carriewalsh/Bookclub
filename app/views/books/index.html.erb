@@ -104,7 +104,7 @@
       <div class="basic-info">
         <p>Authors: <% book.authors.each do |author| %>
           <!--! link_to author.name, author_path(author) -->
-          <%= author.name %>
+          <%= link_to author.name, author_path(author) %>
           <br>
         <% end %></p>
         <p>Publication year: <%= book.publication_year %></p>

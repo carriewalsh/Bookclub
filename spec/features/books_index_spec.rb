@@ -116,11 +116,19 @@ RSpec.describe "a user visiting books index page" do
       end
     end
 
-    xit "should link to book page from title" do
+    it "should link to book page from title" do
       visit books_path
       within first ".book-card" do
         click_link "Title 2"
-        expect(current_path).to eq book_path(book)
+        expect(current_path).to eq book_path(@b2)
+      end
+    end
+
+    it "should link to author page from author" do
+      visit books_path
+      within first ".book-card" do
+        click_link "Sam Sampson"
+        expect(current_path).to eq author_path(@a)
       end
     end
 

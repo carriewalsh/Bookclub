@@ -55,8 +55,5 @@ RSpec.describe "Authors show page" do
       expect(current_path).to eq(books_path)
       expect(page).to have_no_link("John Smith")
     end
-
-
   end
-
 end
