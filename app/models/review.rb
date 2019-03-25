@@ -8,9 +8,9 @@ class Review < ApplicationRecord
 
   def self.sort_reviews_by_created_at(order)
     if (order == :asc)
-      order(created_at: :asc)
-    elsif
-      order(created_at: :desc)
+      order("reviews.created_at asc")
+    else
+      order("reviews.created_at desc")
     end
   end
 

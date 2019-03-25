@@ -17,7 +17,16 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(username: params[:id])
+    @username = params[:id]
+    if params.has_key?("sort")
+      if params[:sort] == "Oldest Reviews"
+        @reviews = Review.where(username: params[:id]).sort_reviews_by_created_at(:asc)
+      else
+        @reviews = Review.where(username: params[:id]).sort_reviews_by_created_at(:desc)
+      end
+    else
+      @reviews = Review.where(username: params[:id])
+    end
   end
 
   def destroy
