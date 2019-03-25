@@ -6,6 +6,12 @@ class Review < ApplicationRecord
                         :rating,
                         :review_text
 
-
+  def self.sort_reviews_by_created_at(order)
+    if (order == :asc)
+      order(created_at: :asc)
+    elsif
+      order(created_at: :desc)
+    end
+  end
 
 end

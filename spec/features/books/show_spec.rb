@@ -49,14 +49,13 @@ RSpec.describe 'book show page', type: :feature do
     it 'shows review information' do
 
       visit book_path(@book.id)
-
       expect(page).to have_content("Review Title: #{@review_1.title}")
-      expect(page).to have_content("Username: #{@review_1.username}")
+      expect(page).to have_content("User: #{@review_1.username}")
       expect(page).to have_content("Rating: #{@review_1.rating}")
       expect(page).to have_content("Review: #{@review_1.review_text}")
 
       expect(page).to have_content("Review Title: #{@review_2.title}")
-      expect(page).to have_content("Username: #{@review_2.username}")
+      expect(page).to have_content("User: #{@review_2.username}")
       expect(page).to have_content("Rating: #{@review_2.rating}")
       expect(page).to have_content("Review: #{@review_2.review_text}")
       #once html is done add within tests
