@@ -4,24 +4,17 @@ class BooksController < ApplicationController
     @bottom_3 = Book.sort_by_avg_rating(:asc,:without).take(3)
     #@top_reviewers =
     if params.has_key?("sort")
-      binding.pry
-      if params[:sort] = "Best Average Rating"
-        binding.pry
+      if params[:sort] == "Best Average Rating"
         @books = Book.sort_by_avg_rating(:desc,:with)
-      elsif params[:sort] = "Worst Average Rating"
-        binding.pry
+      elsif params[:sort] == "Worst Average Rating"
         @books = Book.sort_by_avg_rating(:asc,:with)
-      elsif params[:sort] = "Most Pages"
-        binding.pry
+      elsif params[:sort] == "Most Pages"
         @books = Book.sort_by(:pages,:desc)
-      elsif params[:sort] = "Fewest Pages"
-        binding.pry
+      elsif params[:sort] == "Fewest Pages"
         @books = Book.sort_by(:pages,:asc)
-      elsif params[:sort] = "Most Reviews"
-        binding.pry
+      elsif params[:sort] == "Most Reviews"
         @books = Book.sort_by(:reviews,:desc)
-      elsif params[:sort] = "Fewest Reviews"
-        binding.pry
+      elsif params[:sort] == "Fewest Reviews"
         @books = Book.sort_by(:reviews,:asc)
       end
     else
