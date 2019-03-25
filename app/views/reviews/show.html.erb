@@ -1,5 +1,7 @@
+
 <% @reviews.each do |review| %>
   <ul>
+    <li><%= link_to 'Delete Review', review_path(review.id), method: :delete %></li>
     <li>Review Title: <%= review.title %></li>
     <li>Review: <%= review.review_text %></li>
     <li>Rating: <%= review.rating %></li>
