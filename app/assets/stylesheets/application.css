@@ -68,6 +68,19 @@ nav {
 
  }
 
+ .toggle h2 {
+   font-size: 1em;
+ }
+
+ .book-card a {
+   text-decoration: none;
+   color: #F54923;
+ }
+
+ .book-card a:hover {
+   color: #3C618B;
+ }
+
  .welcome {
    display: block;
    background-color: #D1CEC5;
@@ -92,10 +105,6 @@ nav {
   padding-bottom:5px;
   position: -webkit-sticky;
   position: sticky;
-}
-
-.toggle h2 {
-  font-size: 1em;
 }
 
 .statistics {
@@ -126,6 +135,7 @@ nav {
   text-align: center;
   font-size: 1.5em;
   padding-right: 6em;
+  padding-bottom: 5px;
 }
 
 .new-book-form h2 {
@@ -228,6 +238,8 @@ nav {
   border-radius: 10px;
   width: 8em;
   font-size: 1em;
+  text-decoration: none;
+  text-align: center;
 }
 
 #add-book:hover {

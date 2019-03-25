@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @top_3 = Book.sort_by_avg_rating(:desc,:with).take(3)
+    @bottom_3 = Book.sort_by_avg_rating(:asc,:without).take(3)
+    #@top_reviewers = 
   end
 
   def show
