@@ -18,8 +18,10 @@ RSpec.describe Book, type: :model do
   describe "Class Methods" do
     before :each do
       @a = Author.create(name: "Sam Sampson")
+      @a2 = Author.create(name: "Don Donson")
       @b2 = @a.books.create(title: "Title 2", publication_year: 1996, pages: 200, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b1 = @a.books.create(title: "Title 1", publication_year: 1996, pages: 1, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
+      @b1.authors << @a2
       @b3 = @a.books.create(title: "Title 3", publication_year: 1996, pages: 300, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b4 = @a.books.create(title: "Title 4", publication_year: 1996, pages: 400, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
       @b5 = @a.books.create(title: "Title 5", publication_year: 1996, pages: 350, cover_image: "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg")
@@ -49,6 +51,18 @@ RSpec.describe Book, type: :model do
         expect(@b2.avg_rating).to eq(3.67)
         expect(@b5.avg_rating).to eq(1.5)
         expect(@b7.avg_rating).to eq("No reviews")
+      end
+    end
+
+    describe ".top_review" do
+      it "lists one top review" do
+        expect(@b1.top_review).to eq(@r0)
+      end
+    end
+
+    describe ".other_authors" do
+      it "lists the other authors based on an author arg" do
+        expect(@b1.other_authors(@a)).to eq([@a2])
       end
     end
 

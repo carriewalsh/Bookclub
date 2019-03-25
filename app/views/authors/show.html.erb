@@ -1,0 +1,21 @@
+<header>
+  <nav>
+    <p><%= link_to "Home", root_path %></p>
+    <p><%= link_to "Books", books_path %></p>
+  </nav>
+  <section class="toggle">
+    <%= link_to "Delete Author", books_path, {id: "add-book"} %>
+  </section>
+</header>
+
+<div class="author-container">
+  <h2><%= @author.name %></h2>
+  <% @books.each do |book| %>
+  <div class="book-card">
+    <%= book.title %>
+    <p>Publication year: <%= book.publication_year %></p>
+    <p>Pages: <%= book.pages %></p>
+    <p>book.top_review</p>
+    <% end %>
+  </div>
+</div>
