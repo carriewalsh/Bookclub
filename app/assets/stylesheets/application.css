@@ -120,6 +120,23 @@ nav {
   color: white;
 }
 
+.book-card h3 {
+  grid-column: 1 / span 2;
+  z-index: 10;
+  text-align: center;
+  font-size: 1.5em;
+  padding-right: 6em;
+}
+
+.new-book-form h2 {
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 1em;
+  background: #D4D5D7;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
 .book-snippet {
   background-color: #D4D5D7;
   color: black;
@@ -161,14 +178,6 @@ nav {
   z-index: 0;
 }
 
-.book-card h3 {
-  grid-column: 1 / span 2;
-  z-index: 10;
-  text-align: center;
-  font-size: 1.5em;
-  padding-right: 6em;
-}
-
 .basic-info {
   grid-column: 2 / span 1;
 }
@@ -177,20 +186,31 @@ nav {
   grid-column: 3 / span 1;
 }
 
-.new-form {
+.new-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-right: 10px;
+}
+
+.new-book-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  grid-column: 4 / span 2;
   margin-top: 100px;
   margin-left: 50px;
-  margin-right: 50px;
+  margin-right: 100px;
+  width: 80%;
   background-color: #3C618B;
   padding: 10px;
+  border-radius: 5px;
 }
 
 #sort-button {
   border: none;
   background-color: black;
   color: #D4D5D7;
-  padding-top: 5px;
-  padding-bottom: 10px;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -213,4 +233,16 @@ nav {
 #add-book:hover {
   color: #D4D5D7;
   background-color: #3C618B;
+}
+
+#new-book-submit {
+  border: none;
+  color: white;
+  background-color: black;
+  font-size: 1.2em;
+}
+
+#new-book-submit:hover {
+  color: #D4D5D7;
+  background-color: #F54923;
 }

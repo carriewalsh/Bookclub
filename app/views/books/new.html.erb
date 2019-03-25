@@ -1,18 +1,28 @@
-<%= form_for @book do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, required: true %>
-
-  <%= f.label :authors %>
-  <%= text_field_tag :authors, nil, required: true %>
-
-  <%= f.label :publication_year %>
-  <%= f.number_field :publication_year, required: true %>
-
-  <%= f.label :pages %>
-  <%= f.number_field :pages, required: true %>
-
-  <%= f.label :cover_image %>
-  <%= f.text_field :cover_image %>
-
-  <%= f.submit %>
-<% end %>
+<div class="new-book">
+  <div class="new-book-form">
+    <h2>Add a Book</h2>
+    <%= form_for @book do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true %>
+    <br>
+    <br>
+    <%= f.label :authors %>
+    <%= text_field_tag :authors, nil, required: true %>
+    <br>
+    <br>
+    <%= f.label :publication_year %>
+    <%= f.number_field :publication_year, required: true %>
+    <br>
+    <br>
+    <%= f.label :pages %>
+    <%= f.number_field :pages, required: true %>
+    <br>
+    <br>
+    <%= f.label :cover_image %>
+    <%= f.text_field :cover_image %>
+    <br>
+    <br>
+    <input type="submit" name="commit" value="Create Book" data-disable-with="Create Book" id="new-book-submit">
+    <% end %>
+  </div>
+</div>
