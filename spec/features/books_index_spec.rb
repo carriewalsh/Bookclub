@@ -55,47 +55,83 @@ RSpec.describe "a user visiting books index page" do
   end
 
   context "when I look at the sorting toggle" do
-    xit "should have sort by most pages" do
+    it "should have sort by best average rating" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Best Average Rating")
+        click_button("Best Average Rating")
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 1")
+      end
+    end
+
+    it "should have sort by worst average rating" do
+      visit books_path
+      within ".toggle" do
+        expect(page).to have_button("Worst Average Rating")
+        click_button("Worst Average Rating")
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 6")
+      end
+    end
+
+    it "should have sort by most pages" do
       visit books_path
       within ".toggle" do
         expect(page).to have_button("Most Pages")
         click_button("Most Pages")
-        expect(current_path).to eq books_path #is this right??
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 4")
       end
     end
 
-    xit "should have sort by fewest pages" do
+    it "should have sort by fewest pages" do
       visit books_path
       within ".toggle" do
         expect(page).to have_button("Fewest Pages")
         click_button("Fewest Pages")
-        expect(current_path).to eq books_path #is this right??
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 1")
       end
     end
 
-    xit "should have sort by most reviews" do
+    it "should have sort by most reviews" do
       visit books_path
       within ".toggle" do
         expect(page).to have_button("Most Reviews")
         click_button("Most Reviews")
-        expect(current_path).to eq books_path #is this right??
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 1")
       end
     end
 
-    xit "should have sort by fewest reviews" do
+    it "should have sort by fewest reviews" do
       visit books_path
       within ".toggle" do
         expect(page).to have_button("Fewest Reviews")
         click_button("Fewest Reviews")
-        expect(current_path).to eq books_path #is this right??
+        expect(current_path).to eq books_path
+      end
+      within first ".book-card" do
+        expect(page).to have_content("Title 7")
       end
     end
 
-    xit "should have an add book button" do
+    it "should have an add book button" do
       visit books_path
       within ".toggle" do
-        expect(page).to have_button("Add Book")
-        click_button("Add Book")
+        expect(page).to have_link("Add Book")
+        click_link("Add Book")
         expect(current_path).to eq new_book_path
       end
     end
