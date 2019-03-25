@@ -51,6 +51,7 @@ class Book < ApplicationRecord
     if null = :without
       arr = joins(:reviews).group('books.id').order('avg(reviews.rating) DESC')
     elsif null = :with
+      binding.pry
       arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
     end
     if direction == :desc
