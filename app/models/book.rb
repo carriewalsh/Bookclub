@@ -55,16 +55,11 @@ class Book < ApplicationRecord
 
 
 
-  def self.sort_by_avg_rating(direction, null)
-    if null == :without
-      arr = joins(:reviews).group('books.id').order('avg(reviews.rating) DESC')
-    elsif null == :with
-      arr = left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
-    end
+  def self.sort_by_avg_rating(direction)
     if direction == :desc
-      arr
+      left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) DESC NULLS LAST')
     elsif direction == :asc
-      arr.reverse
+      left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) ASC NULLS LAST')
     end
   end
 

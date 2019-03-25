@@ -68,19 +68,17 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_avg_rating_asc" do
       it "can sort the books by the average rating ascending" do
-        # expect(Book.sort_by_avg_rating_asc).to eq([@b1,@b3])
-        #can do .to include(adksfjasdkf) (if they have the same rating)
-        expect(Book.sort_by_avg_rating(:asc, :with).last.title).to eq("Title 1")
-        expect(Book.sort_by_avg_rating(:asc, :with)[1].title).to eq("Title 6")
-        expect(Book.sort_by_avg_rating(:asc, :with).first.title).to eq("Title 7")
+        expect(Book.sort_by_avg_rating(:asc)[-2].title).to eq("Title 1")
+        expect(Book.sort_by_avg_rating(:asc)[1].title).to eq("Title 5")
+        expect(Book.sort_by_avg_rating(:asc)[-1].title).to eq("Title 7")
       end
     end
 
     describe ".sort_by_avg_rating_desc" do
-      xit "can sort the books by the average rating descending" do
-        expect(Book.sort_by_avg_rating(:desc,:with).first.title).to eq("Title 1")
-        expect(Book.sort_by_avg_rating(:desc,:with)[-2].title).to eq("Title 6")
-        expect(Book.sort_by_avg_rating(:desc,:with).last.title).to eq("Title 7")
+      it "can sort the books by the average rating descending" do
+        expect(Book.sort_by_avg_rating(:desc)[0].title).to eq("Title 1")
+        expect(Book.sort_by_avg_rating(:desc)[-2].title).to eq("Title 6")
+        expect(Book.sort_by_avg_rating(:desc)[-1].title).to eq("Title 7")
       end
     end
 
