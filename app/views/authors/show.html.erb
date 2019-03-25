@@ -12,7 +12,7 @@
 <div class="author-container">
   <div class="book-card">
   <% @books.each do |book| %>
-    <h3><%= book.title %></h3>
+    <h3><%= link_to book.title, book_path(book) %></h3>
     <img src=<%= book.cover_image %> class="book-cover" alt="cover of <%= book.title %>">
     <div class="basic-info">
       <p><% book.other_authors(@author).each do |author| %></p>
