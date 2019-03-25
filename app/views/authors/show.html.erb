@@ -6,10 +6,10 @@
   <section class="toggle">
     <%= link_to "Delete Author", books_path, {id: "add-book"} %>
   </section>
+  <h2><%= @author.name %></h2>
 </header>
 
 <div class="author-container">
-  <h2><%= @author.name %></h2>
   <div class="book-card">
   <% @books.each do |book| %>
     <h3><%= book.title %></h3>
