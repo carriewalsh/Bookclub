@@ -2,6 +2,11 @@
   <nav>
     <p><%= link_to "Home", root_path %></p>
     <p><%= link_to "Books", books_path %></p>
+    <% if @error != nil %>
+      <div class='error'>
+        <%= @error %>
+      </div>
+    <% end %>
   </nav>
   <section class="toggle">
     <form class=".sort-for," action="/reviews/<%= @username %>" method="get">
