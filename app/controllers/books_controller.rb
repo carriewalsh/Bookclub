@@ -3,7 +3,6 @@ class BooksController < ApplicationController
     @top_3 = Book.sort_by_avg_rating(:desc).take(3)
     @bottom_3 = Book.sort_by_avg_rating(:asc).take(3)
     @reviewers = Review.take_top_three_reviewers
-    @error = "ERROR"
 
     if params.has_key?("sort")
       if params[:sort] == "Best Average Rating"
