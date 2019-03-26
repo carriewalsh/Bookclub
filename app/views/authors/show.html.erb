@@ -4,7 +4,7 @@
     <p><%= link_to "Books", books_path %></p>
   </nav>
   <section class="toggle">
-    <%= link_to "Delete Author", author_path(@author.id), method: :delete %> <!-- , {id: "add-book"} -->
+    <%= link_to "Delete Author", author_path(@author.id), method: :delete, :id => "add-book" %>
   </section>
   <h2><%= @author.name %></h2>
 </header>
