@@ -47,10 +47,6 @@ class Book < ApplicationRecord
     end
   end
 
-  def self.sort_by_pages_asc
-    Book.order(pages: :asc)
-  end
-
   def self.sort_by(topic, direction)
     if topic == :pages
       Book.order(:pages => direction)
