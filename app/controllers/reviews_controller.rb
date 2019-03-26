@@ -17,10 +17,6 @@ class ReviewsController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    @reviews = Review.where(username: params[:id])
-    @fooling_around = Review.fooling_around
-=======
     @username = params[:id]
     if params.has_key?("sort")
       if params[:sort] == "Oldest Reviews"
@@ -31,7 +27,6 @@ class ReviewsController < ApplicationController
     else
       @reviews = Review.where(username: params[:id])
     end
->>>>>>> 856487ba863307583d618cf02a76a5c2ebecb70b
   end
 
   def destroy
