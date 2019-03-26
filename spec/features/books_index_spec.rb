@@ -24,8 +24,8 @@ RSpec.describe "a user visiting books index page" do
     @r9 = @b3.reviews.create(title: "Review 9", username: "BookGirl" , rating:2, review_text: "asdfjhlkjhglriuae")
     @r10 = @b4.reviews.create(title: "Review 10", username: "BookGirl" , rating:2, review_text: "asdfjhlkjhglriuae")
     @r11 = @b5.reviews.create(title: "Review 11", username: "BookGirl" , rating:2, review_text: "asdfjhlkjhglriuae")
-    @r12 = @b5.reviews.create(title: "Review 11", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
-    @r13 = @b6.reviews.create(title: "Review 12", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
+    @r12 = @b5.reviews.create(title: "Review 11", username: "Davie" , rating:1, review_text: "asdfjhlkjhglriuae")
+    @r13 = @b6.reviews.create(title: "Review 12", username: "John" , rating:1, review_text: "asdfjhlkjhglriuae")
   end
 
   context "when I look at the stats bar" do
@@ -47,9 +47,25 @@ RSpec.describe "a user visiting books index page" do
 
     it "should have 3 users who have reviewed the most books" do
       visit books_path
-      within ".top-reviewers" do
         expect(page).to have_content("Top Reviewers")
-        expect(page).to have_css("div.user-snippet", count: 3)
+        expect(page).to have_css(".user-snippet", count: 3)
+    end
+
+    it "should link to the books show pages" do
+      visit books_path
+      within ".lowest-rated" do
+        expect(page).to have_link(@b6.title)
+        click_link @b6.title
+        expect(current_path).to eq book_path(@b6)
+      end
+    end
+
+    it "should link to the users show pages" do
+      visit books_path
+      within ".top-reviewers" do
+        expect(page).to have_link(@r13.username)
+        click_link @r13.username
+        expect(current_path).to eq review_path(@r13.username)
       end
     end
   end
