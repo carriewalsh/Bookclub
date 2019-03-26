@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :reviews, :dependent => :destroy
 
   validates_presence_of :title, :publication_year, :pages, :cover_image
-  validates :title, uniqueness: true
+  validates_uniqueness_of :title, message: "That title already exists"
 
   # def self.avg_rating(book_id)
   #   Review.where("reviews.book_id = #{book_id}").average(:rating)

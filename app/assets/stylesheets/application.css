@@ -90,6 +90,19 @@ header h2 {
    color: #3C618B;
  }
 
+ .about-us h4 {
+   text-align: center;
+ }
+
+ .about-us h4 a {
+   text-decoration: none;
+   color: black;
+ }
+
+ .about-us h4 a:hover {
+   color: #F54923;
+ }
+
  .welcome {
    display: block;
    background-color: #D1CEC5;
@@ -103,6 +116,14 @@ header h2 {
    flex-direction: row;
  }
 
+.about-us {
+  background: #D1CEC5;
+  color: #3C618B;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 5px;
+}
 
 .toggle {
   background-color: #F54923;
@@ -225,6 +246,16 @@ header h2 {
 
 .author-container {
   margin-top: 8.4em;
+}
+
+.error {
+  background: white;
+  padding: 5px;
+  text-align: center;
+}
+
+.error:hover {
+  background:red
 }
 
 #sort-button {

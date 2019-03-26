@@ -3,6 +3,7 @@ class BooksController < ApplicationController
     @top_3 = Book.sort_by_avg_rating(:desc).take(3)
     @bottom_3 = Book.sort_by_avg_rating(:asc).take(3)
     @reviewers = Review.take_top_three_reviewers
+    @error = "ERROR"
 
     if params.has_key?("sort")
       if params[:sort] == "Best Average Rating"
@@ -24,6 +25,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    if params[:error]
+      @error = params[:error]
+    end
     @book = Book.find(params[:id])
     @authors = @book.authors
     @reviews = @book.reviews
@@ -41,9 +45,13 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.title = @book.title.titleize
     @book.save
-    @authors = Author.make_author_list(author_params)
-    @book.authors << @authors
-    redirect_to book_path(Book.find_by(title: @book.title))
+    if @book.id == nil
+      redirect_to book_path(Book.find_by(title: @book.title),error: "That title already exists. Perhaps you meant this book.")
+    else
+      @authors = Author.make_author_list(author_params)
+      @book.authors << @authors
+      redirect_to book_path(Book.find_by(title: @book.title))
+    end
   end
 
   def destroy
