@@ -14,4 +14,7 @@ class Review < ApplicationRecord
     end
   end
 
+  def self.fooling_around
+    binding.pry
+  end
 end

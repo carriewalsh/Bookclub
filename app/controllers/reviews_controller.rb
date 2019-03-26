@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
 
   def show
     @reviews = Review.where(username: params[:id])
+    @fooling_around = Review.fooling_around
   end
 
   def destroy
