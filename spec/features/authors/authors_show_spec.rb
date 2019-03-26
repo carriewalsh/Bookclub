@@ -53,9 +53,9 @@ RSpec.describe "Authors show page" do
     it "had a delete author button" do
       visit author_path(@a26)
       expect(page).to have_link("Delete Author")
-      # click_link("Delete Author")
-      # expect(current_path).to eq(books_path)
-      # expect(page).to have_no_link("John Smith")
+      click_link("Delete Author")
+      expect(current_path).to eq(books_path)
+      expect(page).to have_no_link("John Smith")
     end
   end
 end
