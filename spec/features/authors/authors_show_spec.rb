@@ -16,14 +16,16 @@ RSpec.describe "Authors show page" do
   end
 
   context "as a visitor when I visit the books index page" do
-    # it "when I click on an author name, it takes me to their page" do
-    #   visit books_path
-    #   click_link "John Smith"
-    #   expect(current_path).to eq(author_path(@a26))
-    #
-    #   click_link "John Foreman"
-    #   expect(current_path).to eq(author_path(@a2))
-    # end
+    it "when I click on an author name, it takes me to their page" do
+      visit books_path
+      within first ".book-card" do
+        click_link "John Smith"
+        expect(current_path).to eq(author_path(@a26))
+      end
+
+      click_link "John Foreman"
+      expect(current_path).to eq(author_path(@a2))
+    end
   end
 
 
@@ -51,9 +53,9 @@ RSpec.describe "Authors show page" do
     it "had a delete author button" do
       visit author_path(@a26)
       expect(page).to have_link("Delete Author")
-      # click_link("Delete Author")
-      # expect(current_path).to eq(books_path)
-      # expect(page).to have_no_link("John Smith")
+      click_link("Delete Author")
+      expect(current_path).to eq(books_path)
+      expect(page).to have_no_link("John Smith")
     end
   end
 end

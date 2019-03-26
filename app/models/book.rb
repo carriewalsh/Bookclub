@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :reviews, :dependent => :destroy
 
   validates_presence_of :title, :publication_year, :pages, :cover_image
-  validates :title, uniqueness: true
+  validates_uniqueness_of :title, message: "That title already exists"
 
   # def self.avg_rating(book_id)
   #   Review.where("reviews.book_id = #{book_id}").average(:rating)
@@ -45,10 +45,6 @@ class Book < ApplicationRecord
     elsif direction == :asc
       left_outer_joins(:reviews).group('books.id').order('avg(reviews.rating) ASC NULLS LAST')
     end
-  end
-
-  def self.sort_by_pages_asc
-    Book.order(pages: :asc)
   end
 
   def self.sort_by(topic, direction)
