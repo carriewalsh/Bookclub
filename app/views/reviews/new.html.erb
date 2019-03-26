@@ -5,18 +5,27 @@
   </nav>
 </header>
 
+<div class="new-book">
+  <div class="new-book-form">
 <%= form_for [@book, @review] do |f| %>
-  <p><%= f.label :title %></p>
+  <h2> Add a Review </h2>
+  <%= f.label :title %>
   <%= f.text_field :title %>
-
+  <br>
+  <br>
   <%= f.label :username %>
   <%= f.text_field :username %>
-
+  <br>
+  <br>
   <%= f.label :rating %>
-  <%= f.text_field :rating %>
-
+  <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
+  <br>
+  <br>
   <%= f.label :review_text %>
   <%= f.text_area :review_text, size: "24x6" %>
-
-  <%= f.submit "Create Review" %>
+  <br>
+  <br>
+  <input type="submit" name="commit" value="Create Review" data-disable-with="Create Review" id="new-book-submit">
 <% end %>
+  </div>
+</div>

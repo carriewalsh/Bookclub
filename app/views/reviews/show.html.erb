@@ -2,6 +2,11 @@
   <nav>
     <p><%= link_to "Home", root_path %></p>
     <p><%= link_to "Books", books_path %></p>
+    <% if @error != nil %>
+      <div class='error'>
+        <%= @error %>
+      </div>
+    <% end %>
   </nav>
   <section class="toggle">
     <form class=".sort-for," action="/reviews/<%= @username %>" method="get">
@@ -12,14 +17,29 @@
     </form>
   </section>
 </header>
+
+
+<div class='reviews-container'>
+
+  <h1><%= @reviews.first.username %></h1>
+
 <% @reviews.each do |review| %>
-  <ul>
-    <li><%= link_to 'Delete Review', review_path(review.id), method: :delete %></li>
-    <li>Review Title: <%= review.title %></li>
-    <li>Review: <%= review.review_text %></li>
-    <li>Rating: <%= review.rating %></li>
-    <li>Date written: <%= review.created_at %></li>
-    <li><%= link_to review.book.title, book_path(review.book_id) %></li>
-    <img src=<%= review.book.cover_image %> class="book-cover" alt="cover of <%= review.book.title %>">
-  </ul>
+  <div class='review-card'>
+      <h3><%= link_to 'Delete Review', review_path(review.id), method: :delete %></h3>
+      <h3>Review Title: <%= review.title %></h3>
+      <img src=<%= review.book.cover_image %> class="book-cover" alt="cover of <%= review.book.title %>">
+
+      <div class="basic-info">
+        <p>Review: <%= review.review_text %></p>
+        <br>
+        <p>Rating: <%= review.rating %></p>
+        <br>
+        <p>Date written: <%= review.created_at %></p>
+        <br>
+        <p>Book Title: <%= link_to review.book.title, book_path(review.book_id) %></p>
+        <br>
+      </div>
+    </div>
 <% end %>
+
+</div>
