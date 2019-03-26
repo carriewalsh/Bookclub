@@ -33,7 +33,10 @@ RSpec.describe Book, type: :model do
       @r1 = @b1.reviews.create(title: "Review 1", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhglriuae")
       @r2 = @b1.reviews.create(title: "Review 2", username: "BookGirl" , rating:5, review_text: "asdfjhlkjhglriuae")
       @r3 = @b1.reviews.create(title: "Review 3", username: "BookGirl" , rating:4, review_text: "asdfjhlkjhglriuae")
+      @r14 = @b1.reviews.create(title: "Review 13", username: "BookGirl" , rating:1, review_text: "asdfjhlkjhglriuae")
+      @r15 = @b1.reviews.create(title: "Review 14", username: "BookGirl" , rating:2, review_text: "asdfjhlkjhglriuae")
       @r4 = @b2.reviews.create(title: "Review 4", username: "BookGirl" , rating:4, review_text: "asdfjhlkjhglriuae")
+      @r16 = @b2.reviews.create(title: "Review 15", username: "BookGirl" , rating:4, review_text: "asdfjhlkjhglriuae")
       @r5 = @b2.reviews.create(title: "Review 5", username: "BookGirl" , rating:4, review_text: "asdfjhlkjhglriuae")
       @r6 = @b2.reviews.create(title: "Review 6", username: "BookGirl" , rating:3, review_text: "asdfjhlkjhglriuae")
       @r7 = @b3.reviews.create(title: "Review 7", username: "BookGirl" , rating:3, review_text: "asdfjhlkjhglriuae")
@@ -47,8 +50,8 @@ RSpec.describe Book, type: :model do
 
     describe ".avg_rating" do
       it "can calculate the average rating for abook" do
-        expect(@b1.avg_rating).to eq(4.75)
-        expect(@b2.avg_rating).to eq(3.67)
+        expect(@b1.avg_rating).to eq(3.67)
+        expect(@b2.avg_rating).to eq(3.75)
         expect(@b5.avg_rating).to eq(1.5)
         expect(@b7.avg_rating).to eq("No reviews")
       end
@@ -61,16 +64,27 @@ RSpec.describe Book, type: :model do
     end
 
     describe ".worst_three_reviews" do
-      expect(@b1.worst_three_reviews).to eq([@r3, @r2, @r1])
+      it "lists worst three reviews" do
+        expect(@b1.worst_three_reviews(@b1.reviews)).to include(@r15)
+        expect(@b1.worst_three_reviews(@b1.reviews)).to include(@r14)
+        expect(@b1.worst_three_reviews(@b1.reviews)).to include(@r3)
+
+      end
     end
 
     describe ".top_three_reviews" do
-      expect(@b1.worst_three_reviews).to eq([@r0, @r2, @r1])
+      it "lists top three reviews" do
+        expect(@b1.top_three_reviews(@b1.reviews)).to include(@r1)
+        expect(@b1.top_three_reviews(@b1.reviews)).to include(@r0)
+        expect(@b1.top_three_reviews(@b1.reviews)).to include(@r2)
 
+      end
     end
 
     describe ".average_rating" do
-      expect(@b1.average_rating).to eq((5+5+5+4)/4)
+      it "returns average rating for book" do
+        expect(@b6.average_rating(@b6.reviews)).to eq(1)
+      end
     end
 
     describe ".other_authors" do
@@ -81,7 +95,7 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_avg_rating_asc" do
       it "can sort the books by the average rating ascending" do
-        expect(Book.sort_by_avg_rating(:asc)[-2].title).to eq("Title 1")
+        expect(Book.sort_by_avg_rating(:asc)[-2].title).to eq("Title 2")
         expect(Book.sort_by_avg_rating(:asc)[1].title).to eq("Title 5")
         expect(Book.sort_by_avg_rating(:asc)[-1].title).to eq("Title 7")
       end
@@ -89,7 +103,7 @@ RSpec.describe Book, type: :model do
 
     describe ".sort_by_avg_rating_desc" do
       it "can sort the books by the average rating descending" do
-        expect(Book.sort_by_avg_rating(:desc)[0].title).to eq("Title 1")
+        expect(Book.sort_by_avg_rating(:desc)[0].title).to eq("Title 2")
         expect(Book.sort_by_avg_rating(:desc)[-2].title).to eq("Title 6")
         expect(Book.sort_by_avg_rating(:desc)[-1].title).to eq("Title 7")
       end
