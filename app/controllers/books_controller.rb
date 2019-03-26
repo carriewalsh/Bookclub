@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   def index
     @top_3 = Book.sort_by_avg_rating(:desc).take(3)
     @bottom_3 = Book.sort_by_avg_rating(:asc).take(3)
-    #@top_reviewers =
+    @reviewers = Review.take_top_three_reviewers
+
     if params.has_key?("sort")
       if params[:sort] == "Best Average Rating"
         @books = Book.sort_by_avg_rating(:desc)
@@ -37,10 +38,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
+    @book.title = @book.title.titleize
+    @book.save
     @authors = Author.make_author_list(author_params)
     @book.authors << @authors
-
+    redirect_to book_path(Book.find_by(title: @book.title))
   end
 
   def destroy
@@ -52,7 +55,7 @@ private
 
   def book_params
 
-    if params[:book][:cover_image] == nil
+    if params[:book][:cover_image] == ""
       params[:book][:cover_image] = "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
     end
     params.require(:book).permit(:title,:authors,:pages,:publication_year,:cover_image)

@@ -1,4 +1,17 @@
-
+<header>
+  <nav>
+    <p><%= link_to "Home", root_path %></p>
+    <p><%= link_to "Books", books_path %></p>
+  </nav>
+  <section class="toggle">
+    <form class=".sort-for," action="/reviews/<%= @username %>" method="get">
+      <input type="submit" id="sort-button" name="sort" value="Newest Reviews">
+    </form>
+    <form class=".sort-for," action="/reviews/<%= @username %>" method="get">
+      <input type="submit" id="sort-button" name="sort" value="Oldest Reviews">
+    </form>
+  </section>
+</header>
 <% @reviews.each do |review| %>
   <ul>
     <li><%= link_to 'Delete Review', review_path(review.id), method: :delete %></li>
