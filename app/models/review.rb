@@ -14,16 +14,7 @@ class Review < ApplicationRecord
     end
   end
 
-<<<<<<< HEAD
-  def self.fooling_around
-    binding.pry
-=======
-  # def self.take_top_three_reviewer_usernames
-  #   group(:username).order("reviews.count DESC").limit(3).count
-  # end
-
   def self.take_top_three_reviewers
     select("reviews.username, count(reviews.id) as review_count").group(:username).order("review_count DESC").limit(3)
->>>>>>> 856487ba863307583d618cf02a76a5c2ebecb70b
   end
 end

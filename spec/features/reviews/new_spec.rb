@@ -21,6 +21,7 @@ RSpec.describe "As a visitor" do
       new_review = Review.last
 
       expect(current_path).to eq(book_path(@book.id))
+      binding.pry
       expect(new_review.book).to eq(@book)
       expect(new_review.title).to eq('Review Form')
     end
