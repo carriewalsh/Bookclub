@@ -60,6 +60,19 @@ RSpec.describe Book, type: :model do
       end
     end
 
+    describe ".worst_three_reviews" do
+      expect(@b1.worst_three_reviews).to eq([@r3, @r2, @r1])
+    end
+
+    describe ".top_three_reviews" do
+      expect(@b1.worst_three_reviews).to eq([@r0, @r2, @r1])
+
+    end
+
+    describe ".average_rating" do
+      expect(@b1.average_rating).to eq((5+5+5+4)/4)
+    end
+
     describe ".other_authors" do
       it "lists the other authors based on an author arg" do
         expect(@b1.other_authors(@a)).to eq([@a2])
