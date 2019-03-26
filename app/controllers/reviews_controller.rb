@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @username = params[:id]
     if params[:error]
       @error = params[:error]
-    end 
+    end
     if params.has_key?("sort")
       if params[:sort] == "Oldest Reviews"
         @reviews = Review.where(username: params[:id]).sort_reviews_by_created_at(:asc)
@@ -34,7 +34,11 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id]).destroy
-    redirect_to review_path(@review.username)
+    if Review.find_by(username: @review.username)
+      redirect_to review_path(@review.username)
+    else
+      redirect_to books_path
+    end
   end
 
   private
