@@ -16,14 +16,16 @@ RSpec.describe "Authors show page" do
   end
 
   context "as a visitor when I visit the books index page" do
-    # it "when I click on an author name, it takes me to their page" do
-    #   visit books_path
-    #   click_link "John Smith"
-    #   expect(current_path).to eq(author_path(@a26))
-    #
-    #   click_link "John Foreman"
-    #   expect(current_path).to eq(author_path(@a2))
-    # end
+    it "when I click on an author name, it takes me to their page" do
+      visit books_path
+      within first ".book-card" do
+        click_link "John Smith"
+        expect(current_path).to eq(author_path(@a26))
+      end
+
+      click_link "John Foreman"
+      expect(current_path).to eq(author_path(@a2))
+    end
   end
 
 

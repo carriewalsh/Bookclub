@@ -206,18 +206,17 @@ RSpec.describe "a user visiting books index page" do
       end
     end
 
-    xit "should show the book average rating" do
-
+    it "should show the book average rating" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("Average Rating: 3.67") #fix number
+        expect(page).to have_content("Average Rating: 3.67")
       end
     end
 
     it "should show the book number of reviews" do
       visit books_path
       within first ".book-card" do
-        expect(page).to have_content("Total Reviews: 3") #fix number
+        expect(page).to have_content("Total Reviews: 3")
       end
     end
 
