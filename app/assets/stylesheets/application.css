@@ -58,6 +58,10 @@ header h2 {
    color: white;
  }
 
+ li{
+
+ }
+
  .welcome h1 {
    text-align: center;
    font-size: 3vw;
@@ -87,6 +91,15 @@ header h2 {
  }
 
  .book-card a:hover {
+   color: #3C618B;
+ }
+
+ .review-card a {
+   text-decoration: none;
+   color: #F54923;
+ }
+
+ .review-card a:hover {
    color: #3C618B;
  }
 
@@ -139,7 +152,7 @@ header h2 {
   background-color: #3C618B;
   color: #D4D5D7;
   display: flex;
-  font-size: 1.5vw;
+  font-size: 1.0vw;
   justify-content: space-around;
   justify-items: center;
   text-align: center;
@@ -163,6 +176,28 @@ header h2 {
   font-size: 1.5em;
   padding-right: 6em;
   padding-bottom: 5px;
+}
+
+.review-card h3 {
+  grid-column: 1 / span 2;
+  z-index: 10;
+  text-align: right;
+  font-size: 1.5em;
+  padding-right: 6em;
+  padding-bottom: 5px;
+}
+
+.reviews-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10vw;
+}
+
+.reviews-container h1 {
+  font-size: 10em;
+  color: #3C618B;
+  background: #F54923;
+
 }
 
 .new-book-form h2 {
@@ -202,6 +237,13 @@ header h2 {
 }
 
 .book-card {
+  display: grid;
+  background-color: #D4D5D7;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 10px;
+}
+
+.review-card {
   display: grid;
   background-color: #D4D5D7;
   grid-template-columns: 1fr 1fr 1fr;

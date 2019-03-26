@@ -12,55 +12,68 @@
   <div class="error">
     <p><%= @error %></p>
   </div>
+
+
+<section class='statistics'>
+
+  <div class='highest-rated'>
+    <h2> Top Reviews: </h2>
+      <% @top_three_reviews.each do |review| %>
+      <div class='book-snippet'>
+        <h3>Review Title: <%= review.title %></h3>
+        <p>Rating: <%= review.rating %></p>
+        <p>User: <%= link_to review.username, review_path(review.username) %></p>
+      </div>
+      <% end %>
+  </div>
+
+  <div class='lowest-rated'>
+    <h2> Negative Reviews: </h2>
+      <% @worst_three_reviews.each do |review| %>
+      <div class='book-snippet'>
+        <h3>Review Title: <%= review.title %></h3>
+        <p>Rating: <%= review.rating %></p>
+        <p>User: <%= link_to review.username, review_path(review.username) %></p>
+      </div>
+      <% end %>
+  </div>
+
+  <div class='top-reviewers'>
+      <% if @average_review_rating %>
+        <h2>Average Review Rating: <%= @average_review_rating.round(2) %></h2>
+        <br/>
+      <% end %>
+    </div>
+</section>
 </header>
 
+<div class="books-container">
 
-<h2> Top Reviews: </h2>
-<ul>
-  <% @top_three_reviews.each do |review| %>
-    <li>Review Title: <%= review.title %></li>
-    <li>Rating: <%= review.rating %></li>
-    <li>User: <%= link_to review.username, review_path(review.username) %></li>
-    <br/>
+  <div class="book-card">
+    <h3>Title: <%= @book.title %></h3>
+    <img src=<%= @book.cover_image %> class="book-cover" alt="cover of <%= @book.title %>">
+    <div class='basic-info'>
+      <p>Author(s): </p>
+        <% @authors.each do |author| %>
+        <p><%= link_to author.name, author_path(author) %></p>
+        <% end %>
+      <p>Publication Year: <%= @book.publication_year %></p>
+      <p>Page Count: <%= @book.pages %></p
+      <br>
+    </div>
+  </div>
+
+  <% @reviews.each do |review| %>
+  <div class='review-card'>
+    <h3>Review Title: <%= review.title %></h3>
+    <div class="basic-info">
+    <p>Reviewer: <%=  link_to review.username, review_path(review.username) %></p>
+    <p>Rating: <%= review.rating %></p>
+    </div>
+    <div class="review-info">
+      <p>Review: <%= review.review_text %></p>
+    </div>
+    <br>
+  </div>
   <% end %>
-</ul>
-
-<h2> Negative Reviews: </h2>
-
-<ul>
-  <% @worst_three_reviews.each do |review| %>
-    <li>Review Title: <%= review.title %></li>
-    <li>Rating: <%= review.rating %></li>
-    <li>User: <%= link_to review.username, review_path(review.username) %></li>
-    <br/>
-  <% end %>
-</ul>
-<% if @average_review_rating %>
-  <h2>Average Review Rating: <%= @average_review_rating.round(2) %></h2>
-  <br/>
-<% end %>
-
-
-<ul>
-  <li>Title: <%= @book.title %></li>
-  <li>Author(s): </li>
-    <% @authors.each do |author| %>
-    <li><%= link_to author.name, author_path(author) %></li>
-    <% end %>
-  <li>Publication Year: <%= @book.publication_year %></li>
-  <li>Page Count: <%= @book.pages %></li>
-  <br/>
-</ul>
-<div class="book-image">
-  <img src="<%= @book.cover_image %>" alt="cover of <%= @book.title %>">
 </div>
-
-<% @reviews.each do |review| %>
-  <ul>
-    <li>Review Title: <%= review.title %></li>
-    <li><%=  link_to review.username, review_path(review.username) %></li>
-    <li>Rating: <%= review.rating %></li>
-    <li>Review: <%= review.review_text %></li>
-    <br/>
-  </ul>
-<% end %>

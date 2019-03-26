@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review = @book.reviews.new(review_params)
     @review.username = @review.username.titleize
     if @book.reviews.exists?(username: review_params[:username])
-      redirect_to book_path(@book)
+      redirect_to book_path(@book, error: "This user has already reviewed this book")
     else
       @review.save
       redirect_to book_path(@book)
@@ -18,6 +18,9 @@ class ReviewsController < ApplicationController
 
   def show
     @username = params[:id]
+    if params[:error]
+      @error = params[:error]
+    end 
     if params.has_key?("sort")
       if params[:sort] == "Oldest Reviews"
         @reviews = Review.where(username: params[:id]).sort_reviews_by_created_at(:asc)
