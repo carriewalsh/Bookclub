@@ -41,6 +41,8 @@ RSpec.describe "new book workflow" do
       fill_in "Pages", with: book_pages
       fill_in "Publication year", with: book_year
       click_button "Create Book"
+      error = "That title already exists."
+      expect(page).to have_content(error)
 
       click_link "Books"
       within ".books-container" do
