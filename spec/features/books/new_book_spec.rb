@@ -21,8 +21,10 @@ RSpec.describe "new book workflow" do
 
 
       click_button "Create Book"
+      new_book = Book.last
       # expect(params[:book][:cover_image]).to eq book_image how do I check this sad path?
-      expect(current_path).to eq books_path
+      expect(current_path).to eq book_path(new_book)
+
 
     end
   end
