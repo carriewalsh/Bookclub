@@ -27,34 +27,17 @@ class Book < ApplicationRecord
     authors.where.not("authors.name": author.name)
   end
 
+  def worst_three_reviews(reviews)
+    reviews.order(:rating).take(3)
+  end
 
-#   def self.sort_by_avg_rating_asc
-#     book_array = []
-#     no_reviews = Book.all.find_all {|book| book.reviews == []}
-#     book_array << no_reviews
-#     book_array.flatten!
-#
-#     low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
-#     low_high.each do |bk_id,avg_rating|
-#       book_array << Book.find(bk_id)
-#     end
-#     book_array
-#   end
+  def top_three_reviews(reviews)
+    reviews.order(rating: :desc).take(3)
+  end
 
-  # def self.sort_by_avg_rating_desc
-  #   book_array = []
-  #   no_reviews = Book.all.find_all {|book| book.reviews == []}
-  #   book_array << no_reviews
-  #   book_array.flatten!
-  #
-  #   low_high = Review.group(:book_id).order("average_rating").average(:rating) #FINALLY
-  #   low_high.each do |bk_id,avg_rating|
-  #     book_array << Book.find(bk_id)
-  #   end
-  #   book_array
-  # end
-
-
+  def average_rating(reviews)
+    reviews.average(:rating)
+  end
 
   def self.sort_by_avg_rating(direction)
     if direction == :desc

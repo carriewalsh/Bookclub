@@ -8,8 +8,7 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
     @review = @book.reviews.new(review_params)
     @review.username = @review.username.titleize
-    binding.pry
-    if @book.reviews.where(username: review_params[:username]) != []
+    if @book.reviews.exists?(username: review_params[:username])
       redirect_to book_path(@book)
     else
       @review.save
