@@ -22,8 +22,8 @@ RSpec.describe "new book workflow" do
 
       click_button "Create Book"
       new_book = Book.last
-      binding.pry 
-      expect(params[:book][:cover_image]).to eq book_image
+
+      expect(new_book.cover_image).to eq book_image
       expect(current_path).to eq book_path(new_book)
 
 
