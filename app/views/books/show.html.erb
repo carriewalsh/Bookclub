@@ -5,8 +5,8 @@
   </nav>
 
   <section class="toggle">
-    <%= link_to 'Delete', book_path(@book.id), method: :delete %>
-    <%= link_to 'Add Review', new_book_review_path(@book.id) %>
+    <%= link_to 'Delete', book_path(@book.id), method: :delete, :id => "add-book", data: {confirm: "Are you sure you want to delete this book?"} %>
+    <%= link_to 'Add Review', new_book_review_path(@book.id), :id => "add-book" %>
   </section>
 
 

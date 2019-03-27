@@ -66,6 +66,7 @@ header h2 {
    text-align: center;
    font-size: 3vw;
    padding-top: 20px;
+   order: -1;
  }
 
  .welcome-info p {
@@ -74,10 +75,11 @@ header h2 {
    font-size: 20px;
  }
 
- .welcome-info img {
-   height: 20vw;
+ .welcome img {
+   grid-column: 2 / span 1;
    padding: 20px;
-
+   width: 90%;
+   height: auto;
  }
 
  .toggle h2 {
@@ -116,8 +118,49 @@ header h2 {
    color: #F54923;
  }
 
+ .statistics h2 {
+   padding-bottom: 5px;
+   font-size: 1.5em;
+   color: white;
+ }
+
+ .book-card h3 {
+   grid-column: 1 / span 2;
+   z-index: 10;
+   text-align: center;
+   font-size: 1.5em;
+   padding-right: 6em;
+   padding-bottom: 5px;
+ }
+
+ .review-card h3 {
+   grid-column: 1 / span 2;
+   z-index: 10;
+   text-align: right;
+   font-size: 1.5em;
+   padding-right: 6em;
+   padding-bottom: 5px;
+ }
+
+ .reviews-container h1 {
+   font-size: 10em;
+   color: #3C618B;
+   background: #F54923;
+
+ }
+
+ .new-book-form h2 {
+   font-size: 2em;
+   text-align: center;
+   padding-bottom: 1em;
+   background: #D4D5D7;
+   padding: 2px;
+   margin-bottom: 5px;
+ }
+
  .welcome {
-   display: block;
+   display: grid;
+   grid-template-columns: 3fr 2fr;
    background-color: #D1CEC5;
    margin-top: 50px;
    margin-left: 50px;
@@ -125,8 +168,11 @@ header h2 {
  }
 
  .welcome-info {
+   grid-column: 1 / span 1;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
  }
 
 .about-us {
@@ -135,7 +181,7 @@ header h2 {
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 50px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .toggle {
@@ -163,50 +209,10 @@ header h2 {
   margin-bottom: 20px;
 }
 
-.statistics h2 {
-  padding-bottom: 5px;
-  font-size: 1.5em;
-  color: white;
-}
-
-.book-card h3 {
-  grid-column: 1 / span 2;
-  z-index: 10;
-  text-align: center;
-  font-size: 1.5em;
-  padding-right: 6em;
-  padding-bottom: 5px;
-}
-
-.review-card h3 {
-  grid-column: 1 / span 2;
-  z-index: 10;
-  text-align: right;
-  font-size: 1.5em;
-  padding-right: 6em;
-  padding-bottom: 5px;
-}
-
 .reviews-container {
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10vw;
-}
-
-.reviews-container h1 {
-  font-size: 10em;
-  color: #3C618B;
-  background: #F54923;
-
-}
-
-.new-book-form h2 {
-  font-size: 2em;
-  text-align: center;
-  padding-bottom: 1em;
-  background: #D4D5D7;
-  padding: 2px;
-  margin-bottom: 5px;
 }
 
 .book-snippet {
@@ -329,6 +335,24 @@ header h2 {
 #add-book:hover {
   color: #D4D5D7;
   background-color: #3C618B;
+}
+
+#enter-site {
+  border: none;
+  color: white;
+  background-color: #3C618B;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  width: 8em;
+  font-size: 1em;
+  text-decoration: none;
+  text-align: center;
+}
+
+#enter-site:hover {
+  color: #F54923;
+  background-color: black;
 }
 
 #new-book-submit {
