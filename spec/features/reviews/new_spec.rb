@@ -13,7 +13,7 @@ RSpec.describe "As a visitor" do
 
       fill_in 'Title', with: 'Review Form'
       fill_in 'Username', with: "Ethan Grab"
-      fill_in 'Rating', with: 3
+      select '3', from: 'review[rating]'
       fill_in 'review[review_text]', with: "This book was average"
 
       click_button 'Create Review'
@@ -36,7 +36,7 @@ RSpec.describe "As a visitor" do
 
       fill_in 'Title', with: 'Review Form'
       fill_in 'Username', with: "Ethan Grab"
-      fill_in 'Rating', with: 3
+      select '3', from: 'review[rating]'
       fill_in 'review[review_text]', with: "This book was average"
 
       click_button 'Create Review'
@@ -47,7 +47,7 @@ RSpec.describe "As a visitor" do
 
       fill_in 'Title', with: 'Review Form'
       fill_in 'Username', with: "Ethan Grab"
-      fill_in 'Rating', with: 3
+      select '3', from: 'review[rating]'
       fill_in 'review[review_text]', with: "This book was average"
 
       expect(@book.reviews.count).to eq(1)

@@ -32,17 +32,14 @@ RSpec.describe 'user show page', type: :feature do
     expect(page).to have_content("Date written: #{@review_1.created_at}")
     expect(page).to have_content("Date written: #{@review_2.created_at}")
     expect(page).to have_content("Date written: #{@review_3.created_at}")
-    #add link and image content tests
 
     expect(page).to have_link('Delete Review')
   end
 
   it 'can delete a review' do
     visit review_path(@review_1.username)
-    #need to add within
-    click_link 'Delete Review'
+    first(:link, 'Delete Review').click
 
-    expect(current_path).to eq(@review_1.book_id)
     expect(page).to have_no_content(@review_1.title)
 
   end

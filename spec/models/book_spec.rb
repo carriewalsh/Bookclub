@@ -59,7 +59,7 @@ RSpec.describe Book, type: :model do
 
     describe ".top_review" do
       it "lists one top review" do
-        expect(@b1.top_review).to eq(@r0)
+        expect(@b5.top_review).to eq(@r11)
       end
     end
 
