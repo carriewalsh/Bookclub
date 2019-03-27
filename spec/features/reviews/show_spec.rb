@@ -5,6 +5,7 @@ RSpec.describe 'user show page', type: :feature do
     @book_1 = Book.create(title: 'Book 1', publication_year: 1989, pages: 200, cover_image: 'some image')
     @book_2 = Book.create(title: 'Book 2', publication_year: 1989, pages: 200, cover_image: 'some image')
     @book_3 = Book.create(title: 'Book 3', publication_year: 1989, pages: 200, cover_image: 'some image')
+    @book_4 = Book.create(title: 'Book 4', publication_year: 1989, pages: 200, cover_image: 'some image')
     @author_1 = @book_1.authors.create(name: "Author 1")
     @author_2 = @book_2.authors.create(name: "Author 2")
     @author_3 = @book_3.authors.create(name: "Author 3")
@@ -12,6 +13,8 @@ RSpec.describe 'user show page', type: :feature do
     @review_2 = @book_2.reviews.create(username: 'User 1', title: 'Review 2', rating: 1, review_text: "This book is terrible")
     @review_3 = @book_3.reviews.create(username: 'User 1', title: 'Review 3', rating: 2, review_text: "This book is a travesty")
     @review_4 = @book_3.reviews.create(username: 'User 4', title: 'Review 4', rating: 5, review_text: "This book is amazing")
+    @review_5 = @book_4.reviews.create(username: 'User 6', title: 'Review 4', rating: 5, review_text: "This book is amazing")
+
   end
   it 'shows user information' do
 
@@ -41,10 +44,16 @@ RSpec.describe 'user show page', type: :feature do
     first(:link, 'Delete Review').click
 
     expect(page).to have_no_content(@review_1.title)
-
   end
 
+  it 'redirects to book show page if last review' do
+    visit review_path(@review_5.username)
+    first(:link, 'Delete Review').click
 
+    expect(current_path).to eq(books_path)
+
+
+  end
 
 
 end

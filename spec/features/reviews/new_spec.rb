@@ -50,6 +50,11 @@ RSpec.describe "As a visitor" do
       select '3', from: 'review[rating]'
       fill_in 'review[review_text]', with: "This book was average"
 
+      click_button 'Create Review'
+      error = "This user has already reviewed this book"
+      expect(page).to have_content(error)
+      expect(current_path).to eq(book_path(@book))
+
       expect(@book.reviews.count).to eq(1)
     end
   end
