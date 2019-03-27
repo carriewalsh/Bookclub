@@ -181,7 +181,7 @@ header h2 {
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 50px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .toggle {
@@ -339,7 +339,7 @@ header h2 {
 
 #enter-site {
   border: none;
-  color: #D4D5D7;
+  color: white;
   background-color: #3C618B;
   padding-top: 5px;
   padding-bottom: 10px;
