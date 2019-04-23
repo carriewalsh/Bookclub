@@ -61,7 +61,6 @@ class BooksController < ApplicationController
 private
 
   def book_params
-
     if params[:book][:cover_image] == ""
       params[:book][:cover_image] = "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
     end
